@@ -1,0 +1,100 @@
+\chapter{Introduction}
+\pagenumbering{arabic} \setcounter{page}{1}
+
+A large amount of data is produced in the healthcare sector \cite{EMC:2014ve} and much of it remains under utilised and/or under analysed due to either lack of resources (need ref here) or mistrust from patients towards Big Data project \cite{Goldacre:tf}\cite{bcs:2017tl}. About 10\% of the UK’s population health data is currently available for research through the clinical practice datalink (GRPD) and represents untapped research resource \cite{Kousoulis:2015ti}. However there have already been some successful development of algorithms to help predict healthcare conditions \cite{Bellon:2013um} and through the analysis of social media streams to spot warning signs of major epidemics \cite{Kostkova:2016ur}.
+As such this project aims to use one dataset (or multiple related ones that can be interlinked for better exploration of the data) and analyse the features from the data in order to develop a model that could be used to assist the healthcare profession in cost, trends or diagnosis predictions.
+
+
+\section{Background}
+The healthcare sector is currently one of the fastest growing area of data generation \cite{EMC:2014ve}. Using this data to create a more efficient care delivery system and provide better care to a growing patient base is one of the objective of the IT industry in healthcare. Analysis of large datasets to drive better health outcomes is not new but was traditionally done through large randomised controlled trials (RCT) or systematic reviews \cite{Callahan:2017bz}. Those two types of data collection and analysis are the mainstays of evidence based medicine but present shortcomings in that they pose a challenge in administering such large trials and they typically only gather datas from certain types of patient due to the very restricted inclusion criteria that are usually applied to these studies.
+The collection of sample data from the population at large through electronic health record (EHR) can provide large amounts of data across varied patient populations over extensive period of times that would exceed those typically done in RCT (some cohort studies do follow populations over long periods of time but they can present issues with volunteers dropping out of the studies). The gathering of data through continuous health monitoring and from healthcare providers for research purposes would also allow the study of outcomes for patients on multiple medications or suffering from multiple illnesses. If carried out country-wide or even at international level, there would be a high enough amount of patient data to provide robust insights into complex interactions that cannot be revealed through traditional RTC or systematic reviews which tends to focus on narrower criteria of patients.
+As early as the 1970s, the use of informatics in healthcare has been evident but the increased production of data, digitisation of patient data as well as as technological advances which allow for real-time monitoring, better at home data collection through the use of wearables and medically developed apps, and large datasets processing has driven the use of  data analytics and machine learning for the healthcare sector \cite{EMC:2014ve}. 
+In recent years there have been many publications showing the use of the machine learning to develop better healthcare models, from predicting risk of peripheral artery disease \cite{Ross:2016kh} to predicting emergency department admissions \cite{Peck:2012eg}.
+It should however be noted that machine learning is not a magic bullet: not all predicted results will be actionable. For instance there may not be an existing cure for a diagnosis that has been predicted or a model may predict a treatment to be ineffective in certain cases with no existing alternative, which pose ethical concerns as to the action to be taken, this choice should then be considered between patient and physician and falls outwith the remit of what machine learning can do for us \cite{Callahan:2017bz}.
+
+\section{Motivation}
+The healthcare sector currently produces large amounts of data every year and this is set to grow.  According to a report from DellEMC, there were already 153 exabytes of healthcare-related data, with a forecast growth of reaching 2,314 exabytes by 2020 \cite{EMC:2014ve}. The same report highlights that healthcare is the fastest growing sector for data production (annual growth of 48\% compared to an average of 40\% across all sectors).  Health related connected devices (e.g. smart hospital beds , drug delivery system) will increase the data produced in the healthcare sector, with predictions suggesting these devices will contribute up to 16\% of the healthcare data by 2020.
+Further the increased use of wearables produces even larger amount of personalised health data that are largely unexploited (currently only the manufacturers of the devices or developers of the app used on the device have access to this data unless the users have expressively permitted their use for research (e.g. Apple Heart Study with Stanford University \cite{Anonymous:I2FTN6O4, Medicine:2017wa}). 
+However not all of this data is considered useful and one of the challenges to come will be to identify useful data at the right time \cite{EMC:2014ve}.
+It is thought that healthcare services will be under increased demands from an ageing populations with chronic conditions, adding pressure to a system where staff shortage can already be an issue \cite{Medicine:2017wa}.
+These factors will require healthcare providers worldwide to be more efficient in delivering patient care. Thus developing algorithms that can accurately predicts patients needs based on their devices output or algorithms that can forecast regional trends of illness or healthcare requirements ahead of time would greatly help organisations provide better care for their patients.
+
+\section{Aims and Objectives}
+In this project the practice level prescribing dataset from NHS digital for England will be used for all the available years (accessible here https://digital.nhs.uk/data-and-information/publications/statistical/practice-level-prescribing-data). 
+This dataset describes prescribing from GP practices in England for years 2012-2018 and is a list of all medicines, dressings and appliances that are prescribed by all practices in England and dispensed in the community each month. This data has been published every month since July 2016. 
+\begin{enumerate}
+    \item A comprehensive review of the relevant literature will be undertaken to give this project context and explore what work has already been done in this area of research.
+    
+    \item The data will be preprocessed so as to eliminate any redundant or non useful information and to fit the data to a format better suited to our analysis.
+    
+    \item The data available will be explored to identify trends in prescribing and various analyses will be carried out to determine which factors may be affecting prescribing by GPs. In order to help with the identification of factors that drive particular prescribing needs, other datasets available from NHS digital may be used such as the supporting information datasets:
+        \begin{itemize}
+            \item{\% population aged under 18 (https://data.england.nhs.uk/dataset/phe-indicator-92309)}
+            \item{\% population aged under 75 mortality rate from various causes}
+            \item {population coverage vaccine data}
+            \item other indicators available 
+        \end{itemize}
+
+    The prescribing data used for this project will only be considered up to and including 2015 as most of the supplementary data for health indicators available publicly only cover years up to 2015.
+    
+    \item The data will be split into training and testing set so that once a model has been developed, it can be tested against the available data and its accuracy can be determined.
+    
+    \item The main aim of this project is to develop a model which will allow the forecasting of prescribing needs throughout a year for an average GP practice. In order to develop this model, various factors will be examined for their impact on drug prescription (e.g. time of year, location, vaccine uptake, location, etc). It is hoped that developing such a model would help a GP practice structure their needs for the year e.g. increased need for a type of prescription at certain time of years could lead to review of the causes for this need as well as sending relevant advice to patient or setting up clinic-style appointment for this particular need in order to be more efficient. This could also be useful for pharmacies to adjust their ordering and stock so that required medications are always at hand when needed while less needed medications do not go unused.
+    The analysis of the prescribing data could also yield insight into variations on health need based on geographical location, these results together with census data or other available demographic data could inform NHS provisions in certain areas.
+    
+    \item Finally the model will be tested on the testing data set to establish its accuracy and fit to the available data. These findings will be discussed and compared to other work in the literature.
+\end{enumerate}
+\section{Key Techniques}
+The main language used to analyse the data and develop the model will be R.
+The data will be preprocessed to generate usable datasets for the analysis and will be analysed through appropriate statistical methods with the help of various R packages and libraries.
+Visualisation techniques using R will be applied to present the data and a model using stepwise logistic regression or random forest algorithm will be used. 
+Various contributing factors will be tested for their effect on the models and how those factors impact the accuracy of the models. These models will be tested on a subset of the existing data to determine their accuracy and fit to the test data. 
+R studio will be used as a platform for the analysis.
+
+Note: the techniques outlined here may be subjected to change as the project progresses and depending on the size of the data, other platforms (e.g. Hadoop) may eventually be used.
+
+\section{Legal, Social and Ethical Issues}
+The use of people healthcare data carries significant legal, social and ethical issues as this type of data is highly personal and confidential. 
+All data gathered in the UK falls under the Data Protection Act (1998) and the General Data Protection Rule (GDPR, 2018). This means that data gathered in any context can only be used for the purpose that an individual has expressively agreed to. Therefore patient data can only be used for research purpose and publicly shared if patients have consented to do so. 
+The data used for this project was collected from GP practices in England and is a list of all prescribed medication, dressing and appliances prescribed each month. However it does not list who these items where described to, or by which GP. The only data available is the item prescribed along with a practice code and a quantity of the item prescribed. The data is released every month and is already publicly available. This dataset has therefore been approved for release and has been anonymised and consent, where appropriate as already been granted for use of the data for research purpose.
+There are no patient level data available in this dataset.
+This project aims to develop a model that will allow forecasting of prescribing in GP practices. This can potentially carry some ethical and social issues:
+\begin{itemize}
+    \item If the model developed was to be used in a real life situation, any inaccuracy in predicted prescribing needs could engender delay in patients accessing their medications or overstocking of medicines that will go unused.
+    \item The analysis of the data may reveal some variations between geographical areas and this may have some social implications if those variations are then addressed. For example if an area is found to have low dispensation of vaccines, it may be appropriate for the relevant practices to do a campaign to better promote vaccine uptake as well as to explore the reasons behind this. Such interventions have financial and social cost and need to be planned appropriately to be efficient.
+    \item Finally, it is worth considering the end use of such results, for example life or critical illness insurance companies could apply an extra premium based on post code if certain types of prescriptions for chronic illnesses where found to be higher in particular area so it is worth stressing that the end use for the models develop here would not be suited to that effect.
+\end{itemize}
+
+\section{Project Plan}
+Firstly a healthcare-related dataset will be chosen to carry out the analysis and develop a model. Once the dataset has been selected the data will be preprocessed so as to eliminate any unnecessary columns, or aggregate some tables where appropriate with a view to make the dataset smaller.
+The dataset will then be split into training and testing sets. The training set will be used to develop the model, while the testing set will be used to test the fit and accuracy of the model.
+In order to develop a suitable model, the existing training data will be presented and explored to identify various trends and those factors that influence them.
+Finally a model will be formed and an algorithm will be built.
+The model will then be testing with the testing set to determine its fit and accuracy.
+
+
+\section{Chapter List}
+Provide a list of all the chapters within the thesis and a brief summary of the content.
+
+\textbf{Chapter \ref{ch:usingLatex}} Using \LaTeX. 
+%This chapter deals with how to use the \LaTeX \space system.
+
+\textbf{Chapter \ref{ch:Background}} Background Research. 
+%This chapter deals with $\ldots$.
+
+\textbf{Chapter \ref{ch:Design}} Design. 
+%This chapter deals with $\ldots$.
+
+\textbf{Chapter \ref{ch:Implementation}} Implementation. 
+%This chapter deals with $\ldots$.
+
+\textbf{Chapter \ref{ch:Evaluation}} Evaluation \& Testing. 
+%This chapter deals with $\ldots$.
+
+\textbf{Chapter \ref{ch:Conclusion}} Conclusion. 
+%The conclusions of the thesis are presented.
+
+
+\section{Conclusion}
+This chapter has outlined the main aspects and phases of this project and detailed the motivations for carrying out the research. 
+The next chapter will be exploring the current and recent research in the field of healthcare-related data anslytics and machine learning.
