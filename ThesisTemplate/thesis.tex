@@ -3,6 +3,7 @@
 \usepackage[ruled] {algorithm2e}
 \usepackage{url,amsmath,amssymb,fancybox,listings,pdfpages,caption,multicol,datetime,rotating, booktabs}
 %\usepackage[usenames,dvipsnames]{color}
+\usepackage{tgheros}
 \usepackage[pagebackref=false,pdffitwindow=true]{hyperref}
 
 %NOTE: The hyperref usepackage should be the last \usepackage!!
@@ -68,6 +69,8 @@
 %NOTE: END of the document configuration settings
 
 \begin{document}
+{\fontfamily{qhv}\selectfont
+
 
 \DeclareGraphicsExtensions{.jpg,.png,.gif,.pdf}
 %NOTE: When inserting Figures if the extension of the graphic file is not provided LaTeX will automatically search
@@ -102,4 +105,5 @@
 \normalsize
 \appendix
 \include{appendix/appendix}
+}
 \end{document} %NOTE: END of document, nothing after this point
