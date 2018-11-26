@@ -79,13 +79,44 @@ Fertility dataset\footnote{https://www.kaggle.com/gabbygab/fertility-data-set} &
 
 \section{Choice of algorithms used in evaluation}
 \subsection{Quick overview of algorithms}
-what algorithms will be used in our experiments
+This works focuses on supervised learning classification tasks. Several supervised machine learning algorithms have shown promises in computer-aided diagnostic (CAD) \citep{Dua:2014dz}:
+\begin{itemize}
+    \item decision trees (DT) such as Random Forest are easy to comprehend and relatively easy to implement but are challenging to apply to non linear problems \citep{Gray:2013eh}
+    \item support vector machine \citep{Naraei:ct}
+    \item k-NN \citep{Liu:2011dz}
+    \item Bayesian models \citep{Dangare:ut}
+\end{itemize}
+
 \subsection{Reasons for choosing those algorithms}
-why are we choosing them
+The algorithms listed above have demonstrated high performance in classifying tasks on healthcare data, even in the case of imbalanced datasets \citep{Dua:2014dz}. They also utilise different mathematical approaches to classification and therefore are expected to behave differently from one another.
+
+
 
 \section{Proposed avenues of exploration}
 \subsection{Overview of typical methods to address class imbalance}
-write a section on each method 
+The class imbalance problem was discussed in chapter 2 along with some of the techniques used to compensate for its effects. These techniques are discussed here further and can be separated in data-level solutions and algorithm-level solutions:
+\begin{enumerate}
+    \item data-level solutions %insert ref here from Sun et al.
+    \begin{itemize}
+        \item undersampling the prevalent class 
+        \item oversampling the minority class
+        \item detecting the sub-concepts constituting a class and  oversampling each concept to balance the overall distribution
+    \end{itemize}
+    \item algorithm level solutions
+    the solutions here are highly dependent upon the algorithm and in order o develop an algorithmic solution, knowledge of the classifier learning algorithm and the application domain is necessary as well as a thorough comprehension on why the learning algorithm fails when the class distribution of available data is uneven
+    \begin{itemize}
+        \item choosing an appropriate inductive bias (e.g. for decision trees, adjusting the pruning technique)
+        \item for SVMs, different penalty constants can be used for different classes
+    \end{itemize}
+    \item cost-sensitive learning
+    Cost-sensitive classification considers the varying costs of different misclassification types i.e. various penalties are applied for classifying one class as another. In this situation, the learning aims to minimize high cost misclassifications and the total cost of misclassification.
+    Cost-sensitivity can be obtained through:
+    \begin{itemize}
+        \item weighting the data space
+        \item making a classifier cost-sensitive by adjusting parameters to minimize the cost of misclassification
+        \item using Bayes Risk Theory to assign each sample to its lowest risk class
+    \end{itemize}
+\end{enumerate}
 \subsection{Testing the Impact of the use of these methods}
 \subsubsection{First test the algorithms on the dataset without any modifications}
 Details of procedure which will be employed to get a baseline of performance for each dataset and algorithms before applying methods which will help correct the class imbalance
@@ -96,7 +127,7 @@ Details of procedure which will be employed to adjust/correct class imbalance on
 
 \section{Evaluating Performance of algorithms and correction methods}
 
-\subsection{Metrics for evaluation}
+\subsection{Metrics for evaluation} % here use discussion of what is best appropriate to evaluate performance in context of class imbalance 
 Quick overview of each metric plus how helpful they are 
 \subsubsection{Accuracy}
 \subsubsection{Calibration}
