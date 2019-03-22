@@ -1,8 +1,71 @@
 \chapter{Implementation}\label{ch:Implementation}
 
 \section{Exploratory Data Analysis}
+All code for the EDA detailed in this chapter can be found at:\newline https://github.com/AMacleod79/HonoursProjectCode
 \subsection{Data Overview}
-Description of each dataset (refer to graphs as appendices)- Replacement of n/a value to mean values
+\subsubsection{Cervical cancer dataset}
+The cervical cancer dataset was obtained from kaggle.com. \newline
+(see https://www.kaggle.com/loveall/cervical-cancer-risk-classification)\newline
+This dataset does not look at predicting if someone will or will not have cervical cancer, however it looks at attributing a risk factor for cervical cancer or not. Cervical cancer is a complicated diagnostic to make and as such there is not one single test to confirm diagnostic. The positive risk factor is inferred from the combination of the last four column: Hinselmann, Schiller, Citology, Biopsy \cite{Fernandes:2017td} (also cite the discussion page on kaggle).
+The dataset contains 858 instances with 32 features and 4 target variables for each of the test carried out.
+The exploratory data analysis carried out on this dataset can be found in the cited github repository as CervicalCancerEDA.R.
+The 32 features focus on lifestyle factors previously shown to influence cervical cancer risk in women, namely:
+%need to list the attributes here
+An examination of the data structure showed that 27 columns were factors, with the column "smoke pack per year" showing 63 levels. The Random Forest function in R will only handle a maximum of 53 levels and therefore the data in this column needed to be manipulated to accommodate this restriction. First any missing values was replaced by the mean for the column. Then it was found that there were a high number of discrete values between 0 and 1 for the number of pack of cigarettes smoked per year, and these were all considered as independent levels. All values that were less than 1 for this column were replaced by 0, taking the total number of levels for the column from 63 to 42, which is now manageable by Random Forest.
+All the other columns had a number of factor levels smaller than 53 and were left as such, however any missing value was replaced by the mean for the column in which it was found.
+A composite target variable calculated as a mean value of all 4 target variables (Hinselmann, Schiller, Citology, Biopsy was created and added as the last column in the dataset (rounded to 0 or 1).
+Finally the class distribution was represented as a bar chart (see Figure 4.1) and the modified dataset was exported as a new csv file to be used in the later stages of this projects.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_10.png}
+    \caption{Class Distribution of cervical cancer dataset.\newline
+    0 represents the absence of cervical cancer risk for an individual and 1 represent the presence of cervical cancer risk.}
+    \label{fig:my_label}
+\end{figure}
+
+
+\subsubsection{Breast cancer dataset}
+This dataset was obtained from kaggle.com. \newline
+(see https://www.kaggle.com/uciml/breast-cancer-wisconsin-data) \newline
+This dataset was developed with a view to train and test algorithms to determine whether a breast tumour was malignant or benign \cite{}. \newline
+% need citation here
+The dataset is comprised of 569 instances each with 32 attribute and one target label (B for benign and m for malignant).\newline
+The attributes were computed from images of a fine needdle aspirate of a breast mass to describe the characteristics of the cell nuclei present in the image. The features were as follows:
+\begin{itemize}
+    \item radius (mean of distances from center to points on the perimeter)
+    \item texture (standard deviation of gray-scale values) 
+    \item perimeter 
+    \item area 
+    \item smoothness (local variation in radius lengths) 
+    \item compactness (perimeter\^2 / area - 1.0)
+    \item concavity (severity of concave portions of the contour)
+    \item concave points (number of concave portions of the contour)
+    \item symmetry
+    \item fractal dimension ("coastline approximation" - 1)
+\end{itemize}
+The mean, standard error and mean of of three largest values (i.e. the "worst") for each of the feature was calculated and documented as a feature for each image.\newline
+
+The exploratory data analysis carried out on this dataset is documented in the cited github repository as BeastCancerEDA.R.\newline
+An analysis of the data structure showed no missing values. The target variable was expressed as B or M and was recoded to be either 0 (begign) or 1 (malignant), further the target variable was originally the second column but for ease of analysis in the next stages of the project this was moved to be the last column and renamed "Label".
+Finally the class distribution of the dataset was computed and is shown in figure 4.2
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_4.png}
+    \caption{Class Distribution of the breast cancer dataset.\newline 0 represents the cases were the breast mass was benign and 1 thoses cases were the mass was malignant.}
+    \label{fig:my_label}
+\end{figure}
+
+\subsubsection{Liver Disease dataset}
+
+
+
+\subsubsection{Diabetes}
+\subsubsection{Lower Back Pain dataset}
+\subsubsection{Heart Attack Dataset}
+\subsubsection{Autism dataset}
+\subsubsection{Fertility dataset}
 
 \subsection{Class distribution}
 
