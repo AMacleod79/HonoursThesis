@@ -115,40 +115,152 @@ The class distribution was compiled and presented as a graph (see figure 4.4).
     \label{fig:my_label}
 \end{figure}
 
+Compare this distribution with current incidence of the disease - could we randomly sample the data to mimic in the wild distribution????
+
 \subsubsection{Lower Back Pain dataset}
+% need citations
+This dataset was originally built by Dr Henrique da Mota with a view to classify patient as one of 3 class: Normal, patients with disk hernia and patients with spondylolisthesis. In a second classifying task, the two types of sufferers were grouped as one abnormal category. This dataset was first uploaded to UCI (see http://archive.ics.uci.edu/ml/datasets/vertebral+column#) and then uploaded to Kaggle (see https://www.kaggle.com/sammy123/lower-back-pain-symptoms-dataset) as a binary classification task dataset (normal/abnormal).\newline
+The dataset consists of 310 instances with 13 attributes (12 numeric predictors and 1 target label) as follows:
+\begin{itemize}
+    \item pelvic incidence
+    \item pelvic tilt
+    \item lumbar lordosis angle
+    \item sacral slope
+    \item pelvic radius
+    \item degree spondylolisthesis
+    \item pelvic slope
+    \item Direct tilt
+    \item thoracic slope
+    \item cervical tilt
+    \item sacrum angle
+    \item scoliosis slope
+\end{itemize}
+
+The exploratory data analysis for this dataset is documented in the cited github repository as LowBackPainEDA.R.\newline
+For ease of reading and  manipulation, the columns names were replaced by the actual name of the predictor (removing col x from the name) and the unused column X was removed.\newline
+The target label was set as abnormal or normal so the data was recoded to be 1 for abnormal and 0 for normal, in line with the other datasets.
+There were no missing values in the dataset.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_12.png}
+    \caption{Class Distribution of the low back pain dataset.\newline 0 represents the patients with normal spine, 1 identifies patients with abnormal spine (either disk hernia or spondylolisthesis }
+    \label{fig:my_label}
+\end{figure}
+
+Uncharacteristically for a classification task, the abnormal class contains a higher number of instances than the normal class. This is unusual and in order to observe a class distribution more in line with those seen in other datasets in this project, random sampling of the dataset was  carried out so as to create a modified dataset with more normal samples than abnormal. To obtain the new dataset, 7\% of the abnormal instances were  retained (resulting in a higher prevalence than current estimates of 1-3\%) %citation needed here
+and 100 \% of the normal instances were retained. Figure 4.6 shows the modified dataset class distribution.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_14.png}
+    \caption{Class Distribution of the modified low back pain dataset.\newline 0 represents the patients with normal spine, 1 identifies patients with abnormal spine (either disk hernia or spondylolisthesis }
+    \label{fig:my_label}
+\end{figure}
+
+
 \subsubsection{Heart Attack Dataset}
+
+This dataset is a subset from a multi centre, larger study which looked at patients with and without heart disease. The dataset was obtained from kaggle (see https://www.kaggle.com/imnikhilanand/heart-attack-prediction); the complete dataset appears to be available from UCI (see https://archive.ics.uci.edu/ml/datasets/heart+Disease) though some of the files may be corrupted and the classification tasks of the original datasets is not binary.
+The original dataset was made up of 76 predictors but in this dataset this has been reduced to 13 and a target variable:
+\begin{itemize}
+    \item (age) 
+    \item (sex) 
+    \item (cp) 
+    \item (trestbps) 
+    \item (chol) 
+    \item (fbs) 
+    \item (restecg) 
+    \item (thalach) 
+    \item (exang) 
+    \item (oldpeak) 
+    \item (slope) 
+    \item (ca) 
+    \item (thal) 
+\end{itemize}
+
+The exploratory data analysis is documented in the cited github repository as HeartAttackEDA.R.\newline
+Nine column contained missing values, and those were replaced with the mean value for that column. Examination of the data structure revealed that columns "chol" (for cholesterol value) and "thalach" (maximum heart rate achieved) were factors with more than 53 levels (the maximum that can be handled by Random Forest), 154 and 72 levels, respectively. The number of levels was reduced by grouping levels into categories:
+\begin{table}[!htbp]
+\centering
+\caption{Grouping of levels for columns "chol" and "thalach" (Heart Disease Dataset)}
+\begin{tabular}{*5c}
+  \hline
+  \multicolumn{2}{c}{Cholesterol} & \multicolumn{2}{c}{Thalach} \\
+  \hline
+  \hline
+Level Value & New Level & Level Value & New Level\\ 
+  \hline
+    $<$100  & 100 & $\leq$90 & 90 \\ 
+   $<$175 $\leq$150 & 175 & $>$90 $\leq$95   &  95 \\ 
+  $<$200 $\geq$175 & 200 & $>$95 $\leq$100  & 100  \\ 
+   $>$200 $\leq$225 & 225 & $>$100 $\leq$105 & 105  \\ 
+   $>$225 $<$250  & 250 & $>$105 $\leq$110 & 110  \\ 
+   $>$250 $<$275  & 275 & $>$110 $\leq$115 & 115  \\ 
+   $>$275 $<$300  & 300 & $>$115 $\leq$120 & 120   \\ 
+   $>$300 $<$325  & 325 & $>$120 $\leq$125 & 125   \\ 
+   $>$325 $<$350  & 350 & $>$125 $\leq$130 & 130  \\ 
+   $>$350 $<$375  & 375 & $>$130 $\leq$135 & 135  \\ 
+   $>$375 $<$400  & 400 & $>$135 $\leq$140 & 140 \\ 
+   $>$400 $<$425  & 425 & $>$140 $\leq$145 & 145\\ 
+   $>$425 $<$450  & 450 & $>$145 $\leq$150 & 150\\ 
+   $>$450 $<$475  & 475 & $>$150 $\leq$155 & 155\\ 
+   $>$475 $<$500  & 500 & $>$155 $\leq$160 & 160\\ 
+  `$>$500 $<$525  & 525 & $>$160 $\leq$165 & 165 \\ 
+   $>$525 $<$550  & 550 & $>$165 $\leq$170 & 170 \\ 
+   $>$550 $<$575  & 575 & $>$170 $\leq$175 & 175 \\ 
+   $>$575 $<$600  & 600 & $>$175 $\leq$180 & 180 \\ 
+                  &     & $>$180 $\leq$185 & 185 \\ 
+                  &     & $>$185 $\leq$190 & 190 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+The target label was already set as either 0 (no heart disease) or 1 (heart disease) so this did not need to be modified. 
+The class distribution was plotted (see Figure 4.7)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_16.png}
+    \caption{Class Distribution of the heart disease dataset.\newline 0 represents the patients with no heart disease, 1 identifies patients with heart disease}
+    \label{fig:my_label}
+\end{figure}
+
+This dataset is fairly balanced. In order to create a more imbalanced dataset, random sampling of the data which will retain all of the "normal" cases and only 10\% of the "positive" cases was carried out. The modified dataset was saved for future use in the project. The new class distribution is shown in figure 4.8 and reflects real-life prevalence of heart disease in the UK (6.7\% in men and 4.2\% in women)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_18.png}
+    \caption{Class Distribution of the heart disease dataset.\newline 0 represents the patients with no heart disease, 1 identifies patients with heart disease}
+    \label{fig:my_label}
+\end{figure}
+
 \subsubsection{Autism dataset}
+
+
+
+
 \subsubsection{Fertility dataset}
 
-\subsection{Class distribution}
+\subsection{Class distribution comparisons between datasets}
 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{lrl}
+\begin{tabular}{lrr}
   \hline
-Dataset & Percentage & Category \\ 
+Datasets & Majority.Class & Minority.Class \\ 
   \hline
-Cervical\_Cancer & 95.45 & Majority Class \\ 
-  Cervical\_Cancer & 4.55 & Minority Class \\ 
-  Breast\_Cancer & 62.74 & Majority Class \\ 
-  Breast\_Cancer & 37.26 & Minority Class \\ 
-  Liver\_Disease & 71.36 & Majority Class \\ 
-  Liver\_Disease & 28.64 & Minority Class \\ 
-  Diabetes & 65.10 & Majority Class \\ 
-  Diabetes & 34.90 & Minority Class \\ 
-  Lower\_Back\_Pain & 32.26 & Majority Class \\ 
-  Lower\_Back\_Pain & 67.74 & Minority Class \\ 
-  Lower\_Back\_Pain(modified) & 87.72 & Majority Class \\ 
-  Lower\_Back\_Pain(modified) & 12.28 & Minority Class \\ 
-  Heart\_Attack & 63.95 & Majority Class \\ 
-  Heart\_Attack & 36.05 & Minority Class \\ 
-  Heart\_Attack(modified) & 94.95 & Majority Class \\ 
-  Heart\_Attack(modified) & 5.05 & Minority Class \\ 
-  Autism & 73.15 & Majority Class \\ 
-  Autism & 26.85 & Minority Class \\ 
-  Fertility & 88.00 & Majority Class \\ 
-  Fertility & 12.00 & Minority Class \\ 
+Cervical\_Cancer & 95.45 & 4.55 \\ 
+  Breast\_Cancer & 62.74 & 37.26 \\ 
+  Liver\_Disease & 71.36 & 28.64 \\ 
+  Diabetes & 65.10 & 34.90 \\ 
+  Lower\_Back\_Pain & 67.74 & 32.26 \\ 
+  Lower\_Back\_Pain modified & 87.72 & 12.28 \\ 
+  Heart\_Attack & 63.95 & 36.05 \\ 
+  Heart\_Attack modified & 94.95 & 5.05 \\ 
+  Autism & 73.15 & 26.85 \\ 
+  Fertility & 88.00 & 12.00 \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -161,216 +273,42 @@ Cervical\_Cancer & 95.45 & Majority Class \\
 \end{figure}
 \section{Modelling the datasets}
 \subsection{Random Forest}
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 91.67 & 0.86 & 0.94 & 0.89 \\ 
-  CCDf & 93.75 & 0.33 & 0.45 & 0.38 \\ 
-  DiabetesDf & 74.12 & 0.56 & 0.72 & 0.63 \\ 
-  FertDf & 93.10 & 0.00 &  &  \\ 
-  HAPDf & 90.80 & 0.83 & 0.89 & 0.86 \\ 
-  LBPDf & 81.52 & 0.90 & 0.84 & 0.87 \\ 
-  LiverDf & 71.68 & 0.35 & 0.58 & 0.44 \\ 
-   \hline
-\end{tabular}
-\end{table}
+Random forest was used with all the datasets. An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the mostly untouched data.
+The dataset were uploaded as a list which was iterated through by the R function randomForest. The data split was 70:30 train: test and the number of trees was 1000, proximity and importance were both set as true.\newline
+The RandomForestModelling.R script allowed for a data frame to be created to contain performance metrics of the algorithm for each dataset.\newline
+The performance metrics used were Accuracy, sensitivity, precision and F1 score.\newline
+
 \subsection{Support Machine Vector}
 \subsection{K-Nearest Neighbour}
 \subsection{Naive  Bayes}
 \section{Modelling the datasets with data-level solutions applied}
 \subsection{Undersampling of the majority class}
-undersampling majority class 40\%
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 94.23 & 0.98 & 0.93 & 0.96 \\ 
-  CCDf & 95.45 & 0.75 & 0.82 & 0.78 \\ 
-  DiabetesDf & 69.06 & 0.88 & 0.62 & 0.73 \\ 
-  FertDf & 92.31 & 0.67 & 1.00 & 0.80 \\ 
-  HAPDf & 81.13 & 0.90 & 0.80 & 0.85 \\ 
-  LBPDf & 93.06 & 1.00 & 0.92 & 0.96 \\ 
-  LiverDf & 70.71 & 0.86 & 0.62 & 0.72 \\ 
-   \hline
-\end{tabular}
-\end{table}
+\subsubsection{Undersampling majority class: 40\%}
+An R script was created to fit Random Forest to the datasets after under sampling the majority class in an attempt to address the class imbalance. This will lead to loss of data and though we expect some metrics to improve it is likely that others will also worsen.\newline
+A function to choose the proportion of each class to include in the experiment was devised and several different percentages of majority class data were tested, while always retained 100 \% of the minority class.  The default value for the function was 40\% of the majority class and 100\% of the minority class retained. The same experiment was also carried out for 60\% of majority class and 75\% of majority class.\newline
+\subsubsection{Undersampling majority class: 60\%}
+In each case the accuracy, sensitivity precision and F1 score were recorded.\newline
 
-undersampling majority class 60\%
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 96.03 & 0.94 & 0.98 & 0.96 \\ 
-  CCDf & 92.50 & 0.61 & 0.69 & 0.65 \\ 
-  DiabetesDf & 70.24 & 0.78 & 0.65 & 0.71 \\ 
-  FertDf & 77.78 & 0.00 & 0.00 &  \\ 
-  HAPDf & 79.69 & 0.69 & 0.92 & 0.79 \\ 
-  LBPDf & 78.75 & 0.92 & 0.82 & 0.86 \\ 
-  LiverDf & 64.75 & 0.46 & 0.54 & 0.49 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-undersampling majority class 75\%
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 95.10 & 0.90 & 1.00 & 0.95 \\ 
-  CCDf & 95.38 & 0.74 & 0.78 & 0.76 \\ 
-  DiabetesDf & 75.26 & 0.64 & 0.70 & 0.67 \\ 
-  FertDf & 85.71 & 0.50 & 0.33 & 0.40 \\ 
-  HAPDf & 83.33 & 0.75 & 0.81 & 0.78 \\ 
-  LBPDf & 86.90 & 0.94 & 0.90 & 0.92 \\ 
-  LiverDf & 61.70 & 0.31 & 0.52 & 0.39 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
+\subsubsection{Undersampling majority class: 60\%}
 
 \subsection{Oversampling of the minority class}
-Oversampling using SMOTE (retain majority class, oversample 100\%)
-100, 400
-table showing training set distribution before and after smote
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-AuSDf & 353 & 140 & 560 & 280 \\ 
-  BCDf & 258 & 143 & 572 & 286 \\ 
-  CCDf & 573 &  29 & 116 &  58 \\ 
-  DiabetesDf & 362 & 178 & 712 & 356 \\ 
-  FertDf &  61 &  10 &  40 &  20 \\ 
-  HAPDf & 131 &  76 & 304 & 152 \\ 
-  LBPDf &  71 & 147 & 142 & 284 \\ 
-  LiverDf & 297 & 113 & 452 & 226 \\ 
-  subHAPDf & 134 &   7 &  28 &  14 \\ 
-  subLBPDf &  74 &   8 &  32 &  16 \\ 
-   \hline
-\end{tabular}
-\end{table}
+Experiment 3 Oversampling of the minority class
+This time, in order to address the class imbalance, the SMOTE function was applied to the datasets. SMOTE (Synthetic Minority Oversampling Technique) is a technique devised in 2002 (citation). A smote()  R function exists in package DMwR and was used for these experiments.\newline
+%Here detail the smote function
+The k value is set by default at k=5. This value needs to be set to 3 or 4 for the modified heart attack dataset since there so few observations in the training sets after the data has been split. if k exceeds the number of minority class observations in the training set, an error will occur as there will not be enough points to create the new data point.\newline
+The smote() function is applied only to the training set, not the testing set.\newline
+
+The parameters used when applying smote to the non modified datasets were  k=4
 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 93.45 & 0.90 & 0.94 & 0.92 \\ 
-  CCDf & 97.66 & 0.90 & 0.64 & 0.75 \\ 
-  DiabetesDf & 75.00 & 0.62 & 0.71 & 0.66 \\ 
-  FertDf & 75.86 & 0.50 & 0.14 & 0.22 \\ 
-  HAPDf & 88.51 & 0.83 & 0.83 & 0.83 \\ 
-  LBPDf & 78.26 & 0.84 & 0.84 & 0.84 \\ 
-  LiverDf & 71.10 & 0.56 & 0.54 & 0.55 \\ 
-  subHAPDf & 92.98 & 0.33 & 0.33 & 0.33 \\ 
-  subLBPDf & 93.75 & 0.67 & 1.00 & 0.80 \\ 
-   \hline
-\end{tabular}
-\end{table}
+The smote() function was applied to the modified heart attack dataset and low back pain dataset with separate parameters from the other datasets, as the generally lower number of observation existing in the sample meant that too few majority class observations were retained. The parameters for these datasets were 200, 600 and k= 4.
+Finally the fertility datasets consists of a low number of observation and smote() was also applied with separate parameters so as to retain a larger number of majority class observation (200, 600 k=4) % check those numbers.
 
 
-Repeat experiment to exclude modified heart attack and lowback pain dataset and do smote on those separately
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-AuSDf & 353 & 140 & 560 & 280 \\ 
-  BCDf & 258 & 143 & 572 & 286 \\ 
-  CCDf & 573 &  29 & 116 &  58 \\ 
-  DiabetesDf & 362 & 178 & 712 & 356 \\ 
-  FertDf &  61 &  10 &  40 &  20 \\ 
-  HAPDf & 131 &  76 & 304 & 152 \\ 
-  LBPDf &  71 & 147 & 142 & 284 \\ 
-  LiverDf & 297 & 113 & 452 & 226 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 93.45 & 0.90 & 0.94 & 0.92 \\ 
-  CCDf & 97.66 & 0.90 & 0.64 & 0.75 \\ 
-  DiabetesDf & 75.00 & 0.62 & 0.71 & 0.66 \\ 
-  FertDf & 75.86 & 0.50 & 0.14 & 0.22 \\ 
-  HAPDf & 88.51 & 0.83 & 0.83 & 0.83 \\ 
-  LBPDf & 78.26 & 0.84 & 0.84 & 0.84 \\ 
-  LiverDf & 71.10 & 0.56 & 0.54 & 0.55 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
-Now do RF on HA and LBP
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-subHAPDf & 134 &   7 &  84 &  21 \\ 
-  subLBPDf &  74 &   8 &  96 &  24 \\ 
-   \hline
-\end{tabular}
-\end{table}
+ 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-subHAPDf & 92.98 & 0.33 & 0.33 & 0.33 \\ 
-  subLBPDf & 87.50 & 0.33 & 1.00 & 0.50 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-do fertility on its own
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-FertDf &  61 &  10 & 120 &  30 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-FertDf & 96.55 & 0.50 &   1 & 0.67 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
 
 \subsection{k-mean}
