@@ -222,36 +222,58 @@ This dataset is fairly balanced. In order to create a more imbalanced dataset, r
 \subsubsection{Autism dataset}
 The Autism dataset was obtained from kaggle.com:\newline
 https://www.kaggle.com/faizunnabi/autism-screening\newline
-The is dataset examines the predicting factors for someone to have autism or not, based on 10 behavioural features and 10 individual characteristics. The dataset was originally created by Thabtah and colleagues \citep{} and further details can be found in their various publications \cite{}.\newline
+This dataset examines the predicting factors for someone to have autism or not, based on 10 behavioural features and 10 individual characteristics. The dataset was originally created by Thabtah and colleagues \citep{} and further details can be found in their various publications \cite{}.\newline
 The dataset comprising of 704 observations with 21 attributes and 1 target variable (does the patient have autism or not):\newline
 \begin{itemize}
-    \item A1_Score 
-    \item A2_Score
-    \item A3_Score 
-    \item A4_Score
-    \item A5_Score
-    \item A6_Score
-    \item A7_Score
-    \item A8_Score
-    \item A9_Score
-    \item A10_Score
+    \item A1 Score 
+    \item A2 Score
+    \item A3 Score 
+    \item A4 Score
+    \item A5 Score
+    \item A6 Score
+    \item A7 Score
+    \item A8 Score
+    \item A9 Score
+    \item A10 Score
     \item age
     \item gender
     \item ethnicity 
     \item jundice (born with jaundice or not)
     \item austim (relative with PDD or not)
-    \item country_of_res
-    \item used_app_before (used the screening app before)
+    \item country of res
+    \item used app before (used the screening app before)
     \item result (score to the questionnaire)
-    \item age_desc (under 18 or not)
+    \item age desc (under 18 or not)
     \item relation (questionnaire filled by self or other)
     \item Class/ASD
 \end{itemize}
 
 A1 to A10 score represent the answer to each of the 10 question (binary) of a questionnaire for screening based on behaviour. 
-
+The class label for this dataset is No (for not autistic) and yes (for autistic), so the data was recoded to be consistent with the other datasets to 0 for No and 1 for Yes.
+There were some missing values for the age column which were replaced with the mean value for the column. The na values for the ethnicity and relation columns were replaced by "unknown". Finally the country of residence column contained 67 different levels which is too many for Random Forest to handle.  Examination of the distribution of the data per country of residence showed that although some countries showed higher proportion of autism patients than others, in many cases the samples sizes were very small (less than 5) and therefore likely to be biaised one way or the other (see appendix). For that reason, it was felt that, although the countries of residence could have been grouped by continent or geographical zones, this column could be dropped without affecting the performance of the algorithm. 
 
 \subsubsection{Fertility dataset}
+This dataset was obtained from Kaggle:\newline
+https://www.kaggle.com/gabbygab/fertility-data-set \newline
+The data gathered aims to examine the predictors for altered fertility. This data was used in work by Gil and colleagues \cite{} This is a small set of 100 observations with 9 variables and a target label:
+\begin{itemize}
+    \item Season (Season in which the analysis was performed)
+    \item Age (Age at the time of analysis)
+    \item Childhood diseases
+    \item Accident or serious trauma
+    \item Surgical intervention
+    \item High fevers in the last year
+    \item Frequency of alcohol consumption
+    \item Smoking habit
+    \item Number of hours spent sitting per day
+    \item Diagnosis
+\end{itemize}
+
+
+
+
+
+
 
 \subsection{Class distribution comparisons between datasets}
 
