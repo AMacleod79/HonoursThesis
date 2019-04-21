@@ -3,13 +3,13 @@
 \section{Exploratory Data Analysis}
 All code for the EDA detailed in this chapter can be found at:\newline https://github.com/AMacleod79/HonoursProjectCode
 \subsection{Data Overview}
-% add modification to dataset to replicate real life incidence?
-A total of eight health related datasets were chosen to examine the problem of class imbalance. As previously detailed in chapter 3, these datasets were publicly available on kaggle.com and having already been processed to some extent to either anonymise the data or render the data more workable. The extent of class imbalance varied across the different datasets and for some the imbalance was not very severe at all. In all cases a modified version of the dataset was created to attempt to replicate the real-life prevalence of the disease.\newline
+
+A total of eight health related datasets were chosen to examine the problem of class imbalance. As previously detailed in chapter 3, these datasets were publicly available on kaggle.com and having already been processed to some extent to either anonymise the data or render the data more workable. The extent of class imbalance varied across the different datasets and for some the imbalance was not very severe at all. In some cases a modified version of the dataset was created to attempt to replicate the real-life prevalence of the disease.\newline
 
 \subsubsection{Cervical cancer dataset}
 The cervical cancer dataset was obtained from kaggle.com. \newline
 (see https://www.kaggle.com/loveall/cervical-cancer-risk-classification)\newline
-This dataset looks at predicting cervical cancer diagnostic based on well known risk factors. Cervical cancer is a complicated diagnostic to make and as such there is not one single test to confirm diagnostic. A diagnostic column was created as an average from the four possible diagnostic test used  (last four column: Hinselmann, Schiller, Citology, Biopsy ) \cite{Fernandes:2017td} %add the Wen paper too.
+This dataset looks at predicting cervical cancer diagnostic based on well known risk factors. Cervical cancer is a complicated diagnostic to make and as such there is not one single test to confirm diagnostic. A diagnostic column was created as an average from the four possible diagnostic test used  (last four column: Hinselmann, Schiller, Citology, Biopsy ) \citep{Fernandes:2017td} %add the Wen paper too.
 The dataset contains 858 instances with 32 features and 4 target variables for each of the test carried out.
 The exploratory data analysis carried out on this dataset can be found in the cited github repository as CervicalCancerEDA.R.
 The 32 features focus on lifestyle factors previously shown to influence cervical cancer risk in women, namely:
@@ -52,11 +52,11 @@ The 32 features focus on lifestyle factors previously shown to influence cervica
     \item Biopsy (target variable)
 \end{itemize}
 
-The exact meaning of each variable was not always straight forward to understand as the data was uploaded to kaggle by someone else than the original authors. The UCI repository also gives access to the data with scant details on the meaning of each column. The original work by Fernandes and colleagues \cite{Fernandes:2017td} does not clearly define each of the column and the link to the dataset from the published article now returns a 404 error. With these considerations in mind and based on other work carried out by other authors (Wen and colleagues), the above attributes were used and a composite target variable was created (see below).
+The exact meaning of each variable was not always straight forward to understand as the data was uploaded to kaggle by someone else than the original authors. The UCI repository also gives access to the data with scant details on the meaning of each column. The original work by Fernandes and colleagues \cite{Fernandes:2017td} does not clearly define each of the column and the link to the dataset from the published article now returns a 404 error. With these considerations in mind and based on other work carried out by other authors (Wu and colleagues \citep{Wu:2017fa}), the above attributes were used and a composite target variable was created (see below).\newline
 An examination of the data structure showed that 27 columns were factors, with the column "smoke pack per year" showing 63 levels. The Random Forest function in R will only handle a maximum of 53 levels and therefore the data in this column needed to be manipulated to accommodate this restriction. First any missing values was replaced by the mean for the column. Then it was found that there were a high number of discrete values between 0 and 1 for the number of pack of cigarettes smoked per year, and these were all considered as independent levels. All values that were less than 1 for this column were replaced by 0, taking the total number of levels for the column from 63 to 42, which is now manageable by Random Forest.
 All the other columns had a number of factor levels smaller than 53 and were left as such, however any missing value was replaced by the mean for the column in which it was found.
 A composite target variable calculated as a mean value of all 4 target variables (Hinselmann, Schiller, Citology, Biopsy was created and added as the last column in the dataset (rounded to 0 or 1).
-Finally the class distribution was represented as a bar chart and detailed in a table (see Figure 4.1 and table 4.1) and the modified dataset was exported as a new csv file to be used in the later stages of this projects.
+Finally the class distribution was represented as a bar chart and detailed in a table (see Figure 4.1 and table 4.1) and the pre-processed dataset was exported as a new .csv file to be used in the experimental stages of this projects (see table 1).
 
 \subsubsection{Breast cancer dataset}
 This dataset was obtained from kaggle.com. \newline
@@ -80,14 +80,14 @@ The mean, standard error and mean of of three largest values (i.e. the "worst") 
 
 The exploratory data analysis carried out on this dataset is documented in the cited github repository as BreastCancerEDA.R.\newline
 An analysis of the data structure showed no missing values. The target variable was expressed as B or M and was recoded to be either 0 (benign) or 1 (malignant), further the target variable was originally the second column but for ease of analysis in the next stages of the project this was moved to be the last column and renamed "Label".
-Finally the class distribution of the dataset was computed and is shown in figure 4.1 with details shown in table 4.1 the modified dataset was exported as a csv file for later use in the project.\newline
+Finally the class distribution of the dataset was computed and is shown in figure 4.1 with details shown in table 4.1 the modified dataset was exported as a csv file for later use in the project (see table 1).\newline
 
 
 \subsubsection{Liver Disease dataset}
 This dataset was obtained from kaggle.com.\newline
 (see https://www.kaggle.com/jeevannagaraj/indian-liver-patient-dataset). \newline
 
-This dataset is made up of 583 instances of patient records with 10 attributes and one target variable to determine whether the patient is a liver patient or not. The attributes are various biochemical measures of liver health as well as patient specific information such as age and gender:
+This dataset is made up of 583 instances of patient records with 10 attributes and one target variable to determine whether the patient is a liver patient or not \citep{Ramana:2011tn}. The attributes are various biochemical measures of liver health as well as patient specific information such as age and gender:
 \begin{itemize}
     \item Age of patient
     \item Gender of patient
@@ -105,7 +105,8 @@ This dataset is made up of 583 instances of patient records with 10 attributes a
 The exploratory data analysis carried out on this dataset is documented in the cited github repository as LiverDataEDA.R.\newline
 The target label was set to 1 (not a liver patient) and 2 (liver patient), for consistency with respect to the other datasets used in this project, the data was recoded to 0 (not a liver patient) and 1 (liver patient).\newline
 A check for missing data revealed only four instances missing a value in the albumin and globulin ratio. The missing values were replaced with the mean for that column.\newline
-The class distribution was compiled and presented as a graph (see figure 4.1) and the details of the class distribution were shown in table 4.1. The modified dataset was exported as a csv file for later use in the project.\newline
+The class distribution was compiled and presented as a graph (see figure 4.1) and the details of the class distribution were shown in table 4.1.\newline
+The pre-processed dataset was exported as a .csv file for later use in the project (see table 1).\newline
 
 \subsubsection{Diabetes}
 This dataset comprise 768 instances of health data from female Pima Indian patients of at least 21 years of age. There are 8 attributes and one target variable. The target variable indicates whether the individual will develop diabetes within 5 years (1) or not (0). The attributes were as follows:
@@ -123,8 +124,8 @@ This dataset comprise 768 instances of health data from female Pima Indian patie
  
 The exploratory data analysis carried out on this dataset is documented in the cited github repository as DiabetesEDA.R.\newline
 The target label was already set to 0 (did not develop diabetes within 5 years) and 1 (did develop diabetes within 5 years), so no recoding of the data was necessary.\newline
-A check for missing data revealed none, and Smith \textit{et al.,} indicate that they replaced any missing data with 0 (which does not always make sense, e.g. for blood pressure). No further modification of the dataset were necessary and the dataset was saved as csv file for later use.
-The class distribution was compiled and presented as a graph (see figure 4.1) and details of the class distribution can be seen in table 4.1. The dataset was saved as a csv file for later use in the project.
+A check for missing data revealed none, and Smith \textit{et al.,} indicate that they replaced any missing data with 0 (which does not always make sense, e.g. for blood pressure). No further modification of the dataset were necessary and the dataset was saved as .csv file for later use (see table 1).
+The class distribution was compiled and presented as a graph (see figure 4.1) and details of the class distribution can be seen in table 4.1. 
 
 \subsubsection{Lower Back Pain dataset}
 % need citations
@@ -151,7 +152,7 @@ The target label was set as abnormal or normal so the data was recoded to be 1 f
 There were no missing values in the dataset.
 Uncharacteristically for a classification task, the abnormal class contains a higher number of instances than the normal class (see figure 4.1 and table 4.1). This is unusual and in order to observe a class distribution more in line with those seen in other datasets in this project, random sampling of the dataset was  carried out so as to create a modified dataset with more normal samples than abnormal. To obtain the new dataset, 7\% of the abnormal instances were  retained (resulting in a higher prevalence than current estimates of 1-3\% of low back pain sufferer) %citation needed here
 
-and 100 \% of the normal instances were retained. The new class distribution is also shown on figure 4.1 with details outlined in table 4.1.\newline
+and 100 \% of the normal instances were retained. The pre-processed datasets (see table 1). The new class distribution is also shown on figure 4.1 with details outlined in table 4.1.\newline
 
 \subsubsection{Heart Attack Dataset}
 This dataset is a subset from a multi-centre, larger study which looked at patients with and without heart disease. The dataset was obtained from kaggle.\newline 
@@ -180,7 +181,6 @@ The exploratory data analysis is documented in the cited github repository as He
 Nine column contained missing values, and those were replaced with the mean value for that column. Examination of the data structure revealed that columns "chol" (for cholesterol value) and "thalach" (maximum heart rate achieved) were factors with more than 53 levels (the maximum that can be handled by Random Forest), 154 and 72 levels, respectively. The number of levels was reduced by grouping levels into categories:
 \begin{table}[!htbp]
 \centering
-\caption{Grouping of levels for columns "chol" and "thalach" (Heart Disease Dataset)}
 \begin{tabular}{*5c}
   \hline
   \rowcolor{LightCyan}
@@ -212,10 +212,11 @@ Level Value & New Level & Level Value & New Level\\
                   &     & $>$185 $\leq$190 & 190 \\ 
    \hline
 \end{tabular}
+\caption{Grouping of levels for columns "chol" and "thalach" (Heart Disease Dataset)}
 \end{table}
 
 The target label was already set as either 0 (no heart disease) or 1 (heart disease) so this did not need to be modified. 
-The class distribution is shown on Figure 4.1 and detailed in table 4.3. The modified dataset was save as a csv file for further use in the project.
+The class distribution is shown on Figure 4.1 and detailed in table 4.3. The modified dataset was save as a .csv file for further use in the project (see table 1).
 
 This dataset is fairly balanced. In order to create a more imbalanced dataset, random sampling of the data which will retain all of the "normal" cases and only 10\% of the "positive" cases was carried out. The modified dataset was saved for future use in the project. The new class distribution is also shown in figure 4.1 (with break down in table 4.3) and reflects real-life prevalence of heart disease in the UK (6.7\% in men and 4.2\% in women) \citep{}\newline
 
@@ -255,7 +256,7 @@ There were some missing values for the age column which were replaced with the m
 \subsubsection{Fertility dataset}
 This dataset was obtained from Kaggle:\newline
 https://www.kaggle.com/gabbygab/fertility-data-set \newline
-The data gathered aims to examine the predictors for altered fertility. This data was used in work by Gil and colleagues \cite{} This is a small set of 100 observations with 9 variables and a target label:
+The data gathered aims to examine the predictors for altered fertility. This data was used in work by Gil and colleagues \citep{} This is a small set of 100 observations with 9 variables and a target label:
 \begin{itemize}
     \item Season (Season in which the analysis was performed)
     \item Age (Age at the time of analysis)
@@ -269,19 +270,20 @@ The data gathered aims to examine the predictors for altered fertility. This dat
     \item Diagnosis
 \end{itemize}
 
-
-
-
-
-
-
 \subsection{Class distribution comparisons between datasets}
+The class distribution for each dataset was determined as percentages to allow for comparison between the datasets as they vary in size. 
+The percentage of each majority and minority class are given in table 4.2. and represented in figure 4.1.
+The class imbalance varies between dataset. The largest imbalance can be seen for the Cervical Cancer dataset where the minority class represents only 4.55\% of the data, the fertility dataset where the minority class represents 12\% of the data. In the other datasets, the class split is close to 65:35 \% majority:minority.
+
+In the case of the lower back pain dataset, the class representing the "abnormal" patients counts more instances than the the class representing the "normal" patients, however the terms minority and majority were kept for consistency with the other datasets.
 
 
-\begin{table}[H]
+\newline
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{lrr}
   \hline
+  \rowcolor{LightCyan}
 Datasets & Majority.Class & Minority.Class \\ 
   \hline
 Cervical\_Cancer & 95.45 & 4.55 \\ 
@@ -296,61 +298,63 @@ Cervical\_Cancer & 95.45 & 4.55 \\
   Fertility & 88.00 & 12.00 \\ 
    \hline
 \end{tabular}
+\caption{Class distribution of the majority and minority classes for each of the dataset used in the project. All numbers are expressed in percentages}
 \end{table}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_1b.png}
-    \caption{Class Distribution of the chosen datasets.\newline In all cases the majority class is the class representing healthy subjects and the minority class is the class representing affected subjects. In the case of the lower back pain dataset, the class representing the "abnormal" patients counts more instances than the the class representing the "normal" patients, however the terms minority and majority were kept for consistency with the other datasets.}
+    \caption{Class Distribution of the chosen datasets.\newline In all cases the majority class is the class representing healthy subjects and the minority class is the class representing affected subjects.}
     \label{fig:my_label}
 \end{figure}
-\section{Modelling the datasets}
-\subsection{Random Forest}
-Random forest was used with all the datasets. An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the mostly untouched data.
-The dataset were uploaded as a list which was iterated through by the R function randomForest. The data split was 70:30 train: test and the number of trees was 1000, proximity and importance were both set as true.\newline
-The RandomForestModelling.R script allowed for a data frame to be created to contain performance metrics of the algorithm for each dataset.\newline
-The performance metrics used were Accuracy, sensitivity, precision and F1 score.\newline
 
-\subsection{Support Machine Vector}
-\subsection{K-Nearest Neighbour}
-\subsection{Naive  Bayes}
+
+\section{Modelling the datasets with Random Forest}
+The Random Forest algorithm was used with all the datasets. 
+An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the dataset after pre-processing as detailed in section 4.1.
+\subsubsection{Procedure and parameters}
+The dataset were uploaded as a list which was iterated through by the R function randomForest(). 
+The data split was 70:30 train: test and the number of trees was 1000, proximity and importance were both set as true.\newline
+The RandomForestModelling.R script output  a data frame containing performance metrics (Accuracy, Precision, Sensitivity and F1 score) of the algorithm for each dataset.\newline
+Parameters pertaining to the randomForest() function were modifiable through the randomForestModelling function created in the script so that different situations could be easily modelled.
+
+
 \section{Modelling the datasets with data-level solutions applied}
-\subsection{Undersampling of the majority class}
-\subsubsection{Undersampling majority class: 40\%}
+\subsection{Under-sampling of the majority class}
 An R script was created to fit Random Forest to the datasets after under sampling the majority class in an attempt to address the class imbalance. This will lead to loss of data and though we expect some metrics to improve it is likely that others will also worsen.\newline
-A function to choose the proportion of each class to include in the experiment was devised and several different percentages of majority class data were tested, while always retained 100 \% of the minority class.  The default value for the function was 40\% of the majority class and 100\% of the minority class retained. The same experiment was also carried out for 60\% of majority class and 75\% of majority class.\newline
-\subsubsection{Undersampling majority class: 60\%}
-In each case the accuracy, sensitivity precision and F1 score were recorded.\newline
+A function to retain different proportion of each class to include in the experiment was devised. Several different percentages of majority class data were tested, while always retained 100 \% of the minority class.
+The proportion of each class to include for input in the Random Forest algorithm can be changed as parameters of the function.
+The default value for the function was 40\% of the majority class and 100\% of the minority class retained.\newline
+Three different values were tested for under-sampling of the majority class:
+\begin{itemize}
+    \item 40\% of majority class retained
+    \item 60\% of majority class retained
+    \item 75\% of majority class retained
+\end{itemize}
 
-\subsubsection{Undersampling majority class: 60\%}
+In all cases 100\% of the minority class was retained.\newline
+The modified datasets were then fed through the RandomForestModelling script and the accuracy, sensitivity precision and F1 score were recorded to evaluate the effects of the under-sampling on the performance of the algorithm for each dataset.\newline
 
 \subsection{Oversampling of the minority class}
-Experiment 3 Oversampling of the minority class
-This time, in order to address the class imbalance, the SMOTE function was applied to the datasets. SMOTE (Synthetic Minority Oversampling Technique) is a technique devised in 2002 (citation). A smote()  R function exists in package DMwR and was used for these experiments.\newline
-%Here detail the smote function
-The k value is set by default at k=5. This value needs to be set to 3 or 4 for the modified heart attack dataset since there so few observations in the training sets after the data has been split. if k exceeds the number of minority class observations in the training set, an error will occur as there will not be enough points to create the new data point.\newline
-The smote() function is applied only to the training set, not the testing set.\newline
+In order to address the class imbalance, this experiment examined the effect of oversampling the minority class. To achieve oversampling, the Synthetic Minority Oversampling Technique or SMOTE \citep{Chawla:2002ty} was applied.
+This technique creates new data points for the minority class from existing data by considering a number of the closest neigbouring points to each existing data points.
+The DMwR package in R contains the smote() function which implements the SMOTE algorithm in R \citep{}.
+The number of existing neighbouring data points to be considered is the parameter k of the smote() function and can be set experimentally to give best results.\newline
+The k value is set by default at k=5. However, if k exceeds the number of minority class observations in the training set, an error will occur as there will not be enough points to create the new data point.\newline
+Two other parameters need to be set for the function: 
+\begin{itemize}
+    \item perc.over to set the number of extra cases from the minority class are generated. This is typically a value above 100 so that for each case of the minority class in the original dataset, perc.over/100 new cases will be created.
+    \item perc.under controls the number of proportion of cases of the majority class that will be randomly selected for the final balanced dataset. This is calculated based on the the number of newly created minority class cases. 
+\end{itemize}
 
-The parameters used when applying smote to the non modified datasets were  k=4
-
-
+The smote() function is applied only to the training set, in order to train the model,  not the testing set.\newline
+The k value used when applying smote to the non modified datasets was k=4.\newline()
 The smote() function was applied to the modified heart attack dataset and low back pain dataset with separate parameters from the other datasets, as the generally lower number of observation existing in the sample meant that too few majority class observations were retained. The parameters for these datasets were 200, 600 and k= 4.
 Finally the fertility datasets consists of a low number of observation and smote() was also applied with separate parameters so as to retain a larger number of majority class observation (200, 600 k=4) % check those numbers.
 
 
 
-
- 
-
-
-
-\subsection{k-mean}
-
-
-\section{Modelling the datasets with algorithm-level solutions applied}
-
 \section{Conclusions}
-
-The main conclusions for this chapter.
+Three different sets of experiments were carried on all eight datasets with a view to compare the resulting accuracy, precision, sensitivity and F1 score for each dataset in each situation. The results will be plotted and discussed in chapter 5.
 
 
