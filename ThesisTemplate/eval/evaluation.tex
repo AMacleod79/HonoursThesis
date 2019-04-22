@@ -1,199 +1,70 @@
 \chapter{Evaluation \& Testing}\label{ch:Evaluation}
 
-\section{Modelling the datasets with data-level solutions applied}
-\subsection{Undersampling of the majority class}
-undersampling majority class 40\%
-\begin{table}[ht]
+\section{Results from the three series of experiments}
+\subsection{Random Forest: algorithm baseline performance}
+As explained in Chapter 4, the first experiment to be conducted was to feed the datasets through  a Random Forest algorithm and record the performance metrics for each dataset as a baseline to compare the results of the following experiments to.
+
+The confusion matrix was obtained from the RandomForestModelling script for each dataset is shown in appendix D1-D10 and was used to further interpret the data shown in table 5.1.\newline
+Table 5.1 shows the results obtained for each dataset. There are three occasions where the performance metrics were not calculated:
+\begin{itemize}
+    \item The precision value for the Fertility dataset
+    \item The F1 value for the Fertility dataset
+    \item The F1 value for the modified Heart Attack dataset
+\end{itemize}
+
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{lrrrr}
   \hline
+  \rowcolor{LightCyan}
 Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
   \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 94.23 & 0.98 & 0.93 & 0.96 \\ 
-  CCDf & 95.45 & 0.75 & 0.82 & 0.78 \\ 
-  DiabetesDf & 69.06 & 0.88 & 0.62 & 0.73 \\ 
-  FertDf & 92.31 & 0.67 & 1.00 & 0.80 \\ 
-  HAPDf & 81.13 & 0.90 & 0.80 & 0.85 \\ 
-  LBPDf & 93.06 & 1.00 & 0.92 & 0.96 \\ 
-  LiverDf & 70.71 & 0.86 & 0.62 & 0.72 \\ 
+AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+  BCDf & 0.92 & 0.86 & 0.94 & 0.89 \\ 
+  CCDf & 1.00 & 0.90 & 1.00 & 0.95 \\ 
+  DiabetesDf & 0.74 & 0.56 & 0.72 & 0.63 \\ 
+  FertDf & 0.93 & 0.00 & nd & nd \\ 
+  HAPDf & 0.91 & 0.83 & 0.89 & 0.86 \\ 
+  LBPDf & 0.82 & 0.90 & 0.84 & 0.87 \\ 
+  LiverDf & 0.72 & 0.35 & 0.58 & 0.44 \\ 
+  subHAPDf & 0.95 & 0.00 & 0.00 & nd \\ 
+  subLBPDf & 0.91 & 0.50 & 1.00 & 0.67 \\ 
    \hline
 \end{tabular}
 \end{table}
 
-undersampling majority class 60\%
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 96.03 & 0.94 & 0.98 & 0.96 \\ 
-  CCDf & 92.50 & 0.61 & 0.69 & 0.65 \\ 
-  DiabetesDf & 70.24 & 0.78 & 0.65 & 0.71 \\ 
-  FertDf & 77.78 & 0.00 & 0.00 &  \\ 
-  HAPDf & 79.69 & 0.69 & 0.92 & 0.79 \\ 
-  LBPDf & 78.75 & 0.92 & 0.82 & 0.86 \\ 
-  LiverDf & 64.75 & 0.46 & 0.54 & 0.49 \\ 
-   \hline
-\end{tabular}
-\end{table}
+The data from the confusion matrix output for the Fertility test (Appendix D.5)
+show that there were no accurate prediction for the positive class and no inaccurate prediction for the positive class which means the the Precision or Positive predictive value could not be calculated (no division by 0) for this dataset. A lack of Precision value means that the F1 score cannot be calculated as it is obtained by calculated the harmonic mean of Precision and Sensitivity.\newline
+This result is partly due to the size of the dataset (only 100 observations and as such there are only 29 observations in the test set). This means that the model will very accurately predict people not suffering infertility but struggles to identify people suffering from infertility.\newline
+There is no value for the F1 score of the modified Heart Attack dataset as both the Precision and Sensitivity values are equal to 0 and as such the harmonic mean cannot be calculated (no division by 0).
 
-undersampling majority class 75\%
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 95.10 & 0.90 & 1.00 & 0.95 \\ 
-  CCDf & 95.38 & 0.74 & 0.78 & 0.76 \\ 
-  DiabetesDf & 75.26 & 0.64 & 0.70 & 0.67 \\ 
-  FertDf & 85.71 & 0.50 & 0.33 & 0.40 \\ 
-  HAPDf & 83.33 & 0.75 & 0.81 & 0.78 \\ 
-  LBPDf & 86.90 & 0.94 & 0.90 & 0.92 \\ 
-  LiverDf & 61.70 & 0.31 & 0.52 & 0.39 \\ 
-   \hline
-\end{tabular}
-\end{table}
+Table 5.1 also shows that only considering overall accuracy when estimating the performance of an algorithm is misleading. Random Forest returns good to very good accuracy for most of these datasets (accuracy ranges from 0.72 to 1), however, excluding the Autism dataset, the Sensitivity, Precision and F1 score obtained can indicate that although the accuracy is good there is a high chance of the algorithm returning a high number of false positives or missing out positives. \newline
+Since in all cases except the Low Back Pain dataset, there is a majority of cases for the negative class, this is expected and experimenting with under-sampling and over-sampling of the data may lead to improvement of some of the metrics.
 
 
-\subsection{Oversampling of the minority class}
-Oversampling using SMOTE (retain majority class, oversample 100\%)
-100, 400
-table showing training set distribution before and after smote
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-AuSDf & 353 & 140 & 560 & 280 \\ 
-  BCDf & 258 & 143 & 572 & 286 \\ 
-  CCDf & 573 &  29 & 116 &  58 \\ 
-  DiabetesDf & 362 & 178 & 712 & 356 \\ 
-  FertDf &  61 &  10 &  40 &  20 \\ 
-  HAPDf & 131 &  76 & 304 & 152 \\ 
-  LBPDf &  71 & 147 & 142 & 284 \\ 
-  LiverDf & 297 & 113 & 452 & 226 \\ 
-  subHAPDf & 134 &   7 &  28 &  14 \\ 
-  subLBPDf &  74 &   8 &  32 &  16 \\ 
-   \hline
-\end{tabular}
-\end{table}
+\subsection{Under-sampling of the majority class}
+\subsubsection{Retaining 40\% of the majority class}
 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 93.45 & 0.90 & 0.94 & 0.92 \\ 
-  CCDf & 97.66 & 0.90 & 0.64 & 0.75 \\ 
-  DiabetesDf & 75.00 & 0.62 & 0.71 & 0.66 \\ 
-  FertDf & 75.86 & 0.50 & 0.14 & 0.22 \\ 
-  HAPDf & 88.51 & 0.83 & 0.83 & 0.83 \\ 
-  LBPDf & 78.26 & 0.84 & 0.84 & 0.84 \\ 
-  LiverDf & 71.10 & 0.56 & 0.54 & 0.55 \\ 
-  subHAPDf & 92.98 & 0.33 & 0.33 & 0.33 \\ 
-  subLBPDf & 93.75 & 0.67 & 1.00 & 0.80 \\ 
-   \hline
-\end{tabular}
-\end{table}
+
+\subsubsection{Retaining 60\% of the majority class}
 
 
-Repeat experiment to exclude modified heart attack and lowback pain dataset and do smote on those separately
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-AuSDf & 353 & 140 & 560 & 280 \\ 
-  BCDf & 258 & 143 & 572 & 286 \\ 
-  CCDf & 573 &  29 & 116 &  58 \\ 
-  DiabetesDf & 362 & 178 & 712 & 356 \\ 
-  FertDf &  61 &  10 &  40 &  20 \\ 
-  HAPDf & 131 &  76 & 304 & 152 \\ 
-  LBPDf &  71 & 147 & 142 & 284 \\ 
-  LiverDf & 297 & 113 & 452 & 226 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-AuSDf & 100.00 & 1.00 & 1.00 & 1.00 \\ 
-  BCDf & 93.45 & 0.90 & 0.94 & 0.92 \\ 
-  CCDf & 97.66 & 0.90 & 0.64 & 0.75 \\ 
-  DiabetesDf & 75.00 & 0.62 & 0.71 & 0.66 \\ 
-  FertDf & 75.86 & 0.50 & 0.14 & 0.22 \\ 
-  HAPDf & 88.51 & 0.83 & 0.83 & 0.83 \\ 
-  LBPDf & 78.26 & 0.84 & 0.84 & 0.84 \\ 
-  LiverDf & 71.10 & 0.56 & 0.54 & 0.55 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-Now do RF on HA and LBP
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-subHAPDf & 134 &   7 &  84 &  21 \\ 
-  subLBPDf &  74 &   8 &  96 &  24 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-subHAPDf & 92.98 & 0.33 & 0.33 & 0.33 \\ 
-  subLBPDf & 87.50 & 0.33 & 1.00 & 0.50 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-do fertility on its own
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & MajorityClass & MinorityClass & NewMajorityClass & NewMinorityClass \\ 
-  \hline
-FertDf &  61 &  10 & 120 &  30 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrrr}
-  \hline
-Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
-  \hline
-FertDf & 96.55 & 0.50 &   1 & 0.67 \\ 
-   \hline
-\end{tabular}
-\end{table}
+\subsubsection{Retaining 75\% of the majority class}
 
 
-\subsection{k-mean}
+\subsection{Over-sampling the minority class (SMOTE)}
 
+
+
+
+
+\section{Impact of under-sampling and over-sampling on the performance of the algorithms}
+
+
+
+
+ 
 \section{Conclusions}
 
 The main conclusions for this chapter.

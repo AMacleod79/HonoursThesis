@@ -348,7 +348,7 @@ The Random Forest algorithm was used with all the datasets.
 An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the dataset after pre-processing as detailed in section 4.1.
 \subsubsection{Procedure and parameters}
 The dataset were uploaded as a list which was iterated through by the R function randomForest(). 
-The data split was 70:30 train: test and the number of trees was 1000, proximity and importance were both set as true.\newline
+The data split was 70:30 train: test and the number of trees was 128 as Oshiro and colleagues showed that setting the number of trees to higher values mostly only used more CPU but did not improve algorithm performance\citep{MayumiOshiro:ve}. Proximity and importance were both set as true.\newline
 The RandomForestModelling.R script output  a data frame containing performance metrics (Accuracy, Precision, Sensitivity and F1 score) of the algorithm for each dataset.\newline
 Parameters pertaining to the randomForest() function were modifiable through the randomForestModelling function created in the script so that different situations could be easily modelled.
 
