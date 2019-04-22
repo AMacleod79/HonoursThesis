@@ -1,10 +1,9 @@
 \chapter{Evaluation \& Testing}\label{ch:Evaluation}
-
 \section{Results from the three series of experiments}
 \subsection{Random Forest: algorithm baseline performance}
-As explained in Chapter 4, the first experiment to be conducted was to feed the datasets through  a Random Forest algorithm and record the performance metrics for each dataset as a baseline to compare the results of the following experiments to.
+As explained in Chapter 4, the first experiment to be conducted was to feed the datasets through  a Random Forest algorithm and record the performance metrics for each dataset as a baseline to compare the results of the following experiments to. Full script for this experiment can be found in Experiment1.R.
 
-The confusion matrix was obtained from the RandomForestModelling script for each dataset is shown in appendix D1-D10 and was used to further interpret the data shown in table 5.1.\newline
+The confusion matrix was obtained from the RandomForestModelling.R script for each dataset is shown in appendix D1-D10 and was used to further interpret the data shown in table 5.1.\newline
 Table 5.1 shows the results obtained for each dataset. There are three occasions where the performance metrics were not calculated:
 \begin{itemize}
     \item The precision value for the Fertility dataset
@@ -31,6 +30,7 @@ AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\
   subLBPDf & 0.91 & 0.50 & 1.00 & 0.67 \\ 
    \hline
 \end{tabular}
+\caption{Performance metrics obtained for Random Forest applied to the chosen datasets}
 \end{table}
 
 The data from the confusion matrix output for the Fertility test (Appendix D.5)
@@ -43,14 +43,133 @@ Since in all cases except the Low Back Pain dataset, there is a majority of case
 
 
 \subsection{Under-sampling of the majority class}
-\subsubsection{Retaining 40\% of the majority class}
+\subsubsection{Retaining 75\% of the majority class}
+The second of the under-sampling experiments was to retain 60\% of the majority class. Table 5.4 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
+Statistical Analysis on the observed differences for these values is carried out on in the next section 5.2.
+The output for the confusion matrix for this experiment are found in Appendix D33-43.
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \hline
+  \rowcolor{LightCyan}
+Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
+  \hline
+AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+  BCDf & 0.88 & 0.91 & 0.81 & 0.86 \\ 
+  CCDf & 0.99 & 0.90 & 1.00 & 0.95 \\ 
+  DiabetesDf & 0.76 & 0.69 & 0.75 & 0.72 \\ 
+  FertDf & 0.91 & 0.33 & 1.00 & 0.50 \\ 
+  HAPDf & 0.84 & 0.79 & 0.84 & 0.82 \\ 
+  LBPDf & 0.81 & 0.89 & 0.87 & 0.88 \\ 
+  LiverDf & 0.62 & 0.47 & 0.50 & 0.49 \\ 
+  subHAPDf & 0.98 & 0.00 &  &  \\ 
+  subLBPDf & 0.96 & 0.80 & 1.00 & 0.89 \\ 
+   \hline
+\end{tabular}
+\caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (75\% majority class retained)}
+\end{table}
+
+When 25\% of the majority class was discarded, there was no observable effect on the performance of the algorithm for the Autism dataset.
+\begin{itemize}
+    \item Breast Cancer dataset: overall accuracy, precision and F1 scored showed a decrease while sensitivity showed an increase.
+    \item Cervical Cancer dataset: overall accuracy showed a decrease while other metrics remained unchanged.
+    \item Diabetes dataset: all metrics showed an increase.
+    \item Fertility dataset: the overall accuracy showed a decrease while sensitivity shows an increase and the precision value can now be calculated (as well as as F1 score).
+    \item Heart Attack dataset: all metrics showed a decrease
+    \item Low Back Pain dataset: overall accuracy and sensitivity showed a decrease while precision and F1 score showed an increase.
+    \item Liver dataset: overall accuracy and precision showed a decrease while the sensitivity and F1 score showed an increase.
+    \item Modified Heart Attack dataset: overall accuracy increases but the sensitivity remains at 0 and the precision and F1 score cannot be calculated.
+    \item Modified Low Back Pain: the overall accuracy, sensitivity and F1 score showed an increase while precision remained unchanged.
+\end{itemize}
+
+Excluding Diabetes, modified Heart Attack and modified Low Back Pain datasets, under-sampling in this case results in a reduced accuracy, and for most cases sensitivity increases. 
 
 
 \subsubsection{Retaining 60\% of the majority class}
+The second of the under-sampling experiments was to retain 60\% of the majority class. Table 5.3 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
+Statistical Analysis on the observed differences for these values is carried out on in the next section 5.2.
+The output for the confusion matrix for this experiment are found in Appendix D22-32.
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \hline
+  \rowcolor{LightCyan}
+Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
+  \hline
+AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+  BCDf & 0.98 & 0.95 & 1.00 & 0.97 \\ 
+  CCDf & 0.99 & 0.91 & 0.91 & 0.91 \\ 
+  DiabetesDf & 0.76 & 0.79 & 0.73 & 0.76 \\ 
+  FertDf & 0.59 & 0.00 & 0.00 &  \\ 
+  HAPDf & 0.88 & 0.82 & 0.88 & 0.85 \\ 
+  LBPDf & 0.82 & 0.95 & 0.85 & 0.90 \\ 
+  LiverDf & 0.59 & 0.62 & 0.48 & 0.55 \\ 
+  subHAPDf & 0.89 & 0.20 & 1.00 & 0.33 \\ 
+  subLBPDf & 0.85 & 0.40 & 1.00 & 0.57 \\ 
+   \hline
+\end{tabular}
+\caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (60\% majority class retained)}
+\end{table}
 
-\subsubsection{Retaining 75\% of the majority class}
+Retaining 60\% of the majority class does not appear to affect the performance of the algorithm and the Autism dataset, where all metrics have achieved maximum value.
+\begin{itemize}
+    \item Breast Cancer dataset: all metrics show an increase compared to those values obtained from Random Forest on the full dataset.
+    \item Cervical Cancer dataset:sensitivity is increased in this case, while the other metrics all show a decrease.
+    \item Diabetes dataset:all metrics show an increase compared to those values obtained from Random Forest on the full dataset.
+    \item Fertility dataset: the overall accuracy shows an increase while the other metrics remain unchanged.
+    \item Heart Attack dataset: all metrics show a decrease in this situation
+    \item Low Back Pain dataset: the overall accuracy is unchanged while sensitivity, precision and F1 score all show an increase.
+    \item Liver dataset:Sensitivity and F1 score show an increase while accuracy and precision show a decrease
+    \item Modified Heart Attack dataset: the overall accuracy is decreased but both sensitivity and precision have increased and F1 score can now be calculated as both values are $>$0.
+    \item Modified Low Back Pain dataset: Overall accuracy and sensitivity show a decrease while precision remains the same and the F1 score increases.
+\end{itemize}
+
+Discarding 40\% of the majority class generally leads to a decrease in overall accuracy (apart from the Breast Cancer dataset) and an increase in sensitivity (apart from the Heart Attack dataset), the effect on precision is variable and effect on the F1 score values depends on the extent of the variation observed on sensitivity and precision.
+
+\subsubsection{Retaining 40\% of the majority class}
+The first of the under-sampling experiments was to retain only 40\% of the majority class. Table 5.2 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
+The output for the confusion matrix for this experiment are found in Appendix D11-21.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \hline
+  \rowcolor{LightCyan}
+Dataset & Accuracy & Sensitivity & Precision & F1Score \\ 
+  \hline
+AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+  BCDf & 0.95 & 0.95 & 0.97 & 0.96 \\ 
+  CCDf & 0.97 & 1.00 & 0.81 & 0.90 \\ 
+  DiabetesDf & 0.69 & 0.83 & 0.70 & 0.76 \\ 
+  FertDf & 0.82 & 0.00 &  &  \\ 
+  HAPDf & 0.79 & 0.89 & 0.76 & 0.82 \\ 
+  LBPDf & 0.82 & 1.00 & 0.82 & 0.90 \\ 
+  LiverDf & 0.65 & 0.74 & 0.61 & 0.67 \\ 
+  subHAPDf & 0.92 & 0.00 & 0.00 &  \\ 
+  subLBPDf & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+   \hline
+\end{tabular}
+\caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (40\% majority class retained)}
+\end{table}
+
+Interestingly the performance of Random Forest on the Autism dataset after under-sampling is not affected at all. Although 60\%of the majority class has been discarded, all the metrics have achieved maximum value.
+Statistical Analysis on the observed differences for these values is carried out on in the next section 5.2.
+\begin{itemize}
+    \item Breast Cancer dataset: there is an increase in all metrics compared to those obtained with the full dataset 
+    \item Cervical Cancer dataset: there is a decrease in overall accuracy, precision and F1 score, however there is an increase in sensitivity.
+    \item Diabetes dataset: there is a decrease in overall accuracy and precision but an increase in sensitivity and F1 score.
+    \item Fertility dataset: there is a decrease in overall accuracy and the other metrics remain the same.
+    \item Heart Attack dataset: there is a decrease in accuracy, precision and F1 score whereas sensitivity has increased.
+    \item Low Back Pain dataset: there is a decrease in accuracy and precision but the F1 score and sensitivity have both increased.
+    \item Liver Dataset: all metrics except overall accuracy have increased.
+    \item Modified Heart Attack dataset: there is a decrease in overall accuracy and all other values remain unchanged
+    \item Modified Low Back Pain: all metrics show an increase apart from precision which remains unchanged
+\end{itemize}
+
+For 5 of the explored datasets, this experiment shows that the when under-sampling to the extent of discarding 60\% of the majority class, the sensitivity of the algorithm increases while overall accuracy and precision decrease . The F1 score value may decrease or increase depending on the fluctuations of precision and sensitivity as F1 is calculated from both values. It would be expected that if sensitivity increases more than precision decreases then the F1 score would increase while if sensitivity increases less than precision decreases then F1 score would decrease.
+For both the Breast Cancer and Liver dataset, sensitivity, precision and F1 score showed an increase.
 
 
 \subsection{Over-sampling the minority class (SMOTE)}
@@ -59,7 +178,7 @@ Since in all cases except the Low Back Pain dataset, there is a majority of case
 
 
 
-\section{Impact of under-sampling and over-sampling on the performance of the algorithms}
+\section{Discussion: Impact of under-sampling and over-sampling on the performance of the algorithms}
 
 
 
