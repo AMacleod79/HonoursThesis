@@ -1,5 +1,5 @@
 \chapter{Evaluation \& Testing}\label{ch:Evaluation}
-\section{Results from the three series of experiments}
+\section{Results}
 \subsection{Random Forest: algorithm baseline performance}
 As explained in Chapter 4, the first experiment to be conducted was to feed the datasets through  a Random Forest algorithm and record the performance metrics for each dataset as a baseline to compare the results of the following experiments to. Full script for this experiment can be found in Experiment1.R.
 
@@ -168,23 +168,69 @@ Statistical Analysis on the observed differences for these values is carried out
     \item Modified Low Back Pain: all metrics show an increase apart from precision which remains unchanged
 \end{itemize}
 
-The variations between the performance metrics obtained for each of the under-sampling conditions were calculated compared to the established baseline in experiment 1.
+The variations between the performance metrics obtained for each of the under-sampling conditions were calculated compared to the established baseline in experiment 1.\newline
 The variations for Accuracy, Sensitivity, Precision and Accuracy are shown in the Appendix tables D1-D4.
-These values were used to create graphs to represent the variations for each metrics in the different conditions and for the different datasets.
+These values were used to create graphs to represent the variations for each metrics in the different conditions and for the different datasets.\newline
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/AccuVariationUnderBySets.png}
+    \caption{Variation of the accuracy value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:my_label}
+\end{figure}
+
+Figure 5.1 shows the variations in accuracy observed when 75\%, 60\% and 40\% of the majority class was retained.
+Overall the effect is that of a decrease in accuracy when under-sampling of the  majority class is applied, though the effect is slight (less than 0.15 variation for most datasets, except for the Diabetes dataset where the accuracy is greatly affected when under-sampling occurs).\newline
 
 
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/SensiVariationUnderBySets.png}
+    \caption{Variation of the sensitivity value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:my_label}
+\end{figure}
+Figure 5.2 shows the variations in sensitivity observed when   75\%, 60\% and 40\% of the majority class was retained. The overall effect is that sensitivity increases when under-sampling is applied; The trend is that the more of the majority class has been discarded, the more the sensitivity increases, the highest observed increase is 0.4.\newline
 
 
-\begin{table}[ht]
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/PreciVariationUnderBySets.png}
+    \caption{Variation of the precision value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:my_label}
+\end{figure}
+
+Figure 5.3 shows the variations in precision observed when 75\%, 60\% and 40\% of the majority class was retained. In general, precision is reduced by under-sampling, particularly if the proportion of the majority class to be discarded is large, though the effect remains light (maximum reduction is 0.19) In one case (modified Heart Attack dataset), the precision value is greatly increase when 60\% of the majority class is retained, though that effect is not consistent with what is observed on the other datasets.\newline
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/F1VariationUnderBySets.png}
+    \caption{Variation of the F1 score value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:my_label}
+\end{figure}
+
+Figure 5.4 shows the variations in F1 score observed when 75\%, 60\% and 40\% of the majority class was retained. In general the F1 score increases with the increased proportion of discarded majority class. The F1 score is partly dependent on both precision and sensitivity, but as previously discussed sensitivity tends to increase when the proportion of majority class discarded increases while precision decreases when the proportion of majority class discarded increases but to a lesser extent; thus the overall effect on the F1 score is that it increases as the proportion of majority class discarded increases.\newline
+
+\subsection{Over-sampling the minority class (SMOTE)}
+Over-sampling was carried out using the smote() function of R (see script Experiment3.R).
+
+\section{Discussion}
+\subsection{Under-sampling}
+Statistical analysis was carried out on the values obtained from Experiments 1 and 2. An independent t-test was carried out using the software SSPS to evaluate the significance of the variations for each metrics between the baseline (no under-sampling) and each under-sampling condition.\newline
+The output files from SSPS can be found in the github repository and in the appendix. Table 5.5. shows the 2-tail t-test sigma values obtained for each test. All tests were carried out with and without the values for the Autism dataset as these remained unchanged in all experiments and may have affected the results of the t-test.
+None of the sigma values are inferior to 0.05, which means that the observed differences are not significant. It is however worth noting that the samples for each test is small as only 10 datasets were analysed and in some cases the precision or F1 score values were not available, further reducing the number of available cases to be considered. A more extensive analysis with a larger number of datasets could potentially yield statistically significant results.\newline
+
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{*9c}
   \hline
   \rowcolor{LightCyan}
-Condition &\multicolumn{2}{c} {Accuracy} & \multicolumn{2}{c}{Sensitivity} &  \multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
+Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
   \hline
- & [A] & [B] & [A] & [B] & [A] & [B] & [A] & [B] \\
-  Under 40  &0.608& 0.581& 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
+           & [A] & [B] & [A] & [B] & [A] & [B] & [A] & [B] \\
+Under 40  &0.608& 0.581& 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
   Under 60 &0.353& 0.318& 0.649 & 0.628 & 0.941 & 0.925 & 0.789 & 0.800 \\ 
   Under 75 &0.797&0.783 & 0.570 & 0.544 & 0.476 & 0.476 & 0.999 & 0.967 \\ 
    \hline
@@ -193,21 +239,13 @@ Condition &\multicolumn{2}{c} {Accuracy} & \multicolumn{2}{c}{Sensitivity} &  \m
 \end{table}
 
 
-For 5 of the explored datasets, this experiment shows that the when under-sampling to the extent of discarding 60\% of the majority class, the sensitivity of the algorithm increases while overall accuracy and precision decrease . The F1 score value may decrease or increase depending on the fluctuations of precision and sensitivity as F1 is calculated from both values. It would be expected that if sensitivity increases more than precision decreases then the F1 score would increase while if sensitivity increases less than precision decreases then F1 score would decrease.
-For both the Breast Cancer and Liver dataset, sensitivity, precision and F1 score showed an increase.
 
 
 
 
 
-\section{Discussion: Impact of under-sampling and over-sampling on the performance of the algorithms}
-\subsection{Under-sampling}
 
-
-\subsection{Over-sampling the minority class (SMOTE)}
-Over-sampling was carried out using the smote() function of R (see script Experiment3.R).
-%here need to refer back to  the parameters for the different configurations - detail that in chapter 4.
-
+ 
 
 \section{Conclusions}
 
