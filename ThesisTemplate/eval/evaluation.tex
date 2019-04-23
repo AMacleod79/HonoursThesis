@@ -44,9 +44,9 @@ Since in all cases except the Low Back Pain dataset, there is a majority of case
 
 \subsection{Under-sampling of the majority class}
 \subsubsection{Retaining 75\% of the majority class}
-The second of the under-sampling experiments was to retain 60\% of the majority class. Table 5.4 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
+The first of the under-sampling experiments was to retain 75\% of the majority class. Table 5.2 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
 Statistical Analysis on the observed differences for these values is carried out on in the next section 5.2.
-The output for the confusion matrix for this experiment are found in Appendix D33-43.
+The output for the confusion matrix for this experiment are found in Appendix D11-D20.
 
 \begin{table}[ht]
 \centering
@@ -89,7 +89,7 @@ Excluding Diabetes, modified Heart Attack and modified Low Back Pain datasets, u
 \subsubsection{Retaining 60\% of the majority class}
 The second of the under-sampling experiments was to retain 60\% of the majority class. Table 5.3 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
 Statistical Analysis on the observed differences for these values is carried out on in the next section 5.2.
-The output for the confusion matrix for this experiment are found in Appendix D22-32.
+The output for the confusion matrix for this experiment are found in Appendix D21-30.
 
 \begin{table}[ht]
 \centering
@@ -129,8 +129,8 @@ Retaining 60\% of the majority class does not appear to affect the performance o
 Discarding 40\% of the majority class generally leads to a decrease in overall accuracy (apart from the Breast Cancer dataset) and an increase in sensitivity (apart from the Heart Attack dataset), the effect on precision is variable and effect on the F1 score values depends on the extent of the variation observed on sensitivity and precision.
 
 \subsubsection{Retaining 40\% of the majority class}
-The first of the under-sampling experiments was to retain only 40\% of the majority class. Table 5.2 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
-The output for the confusion matrix for this experiment are found in Appendix D11-21.
+The first of the under-sampling experiments was to retain only 40\% of the majority class. Table 5.4 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file.
+The output for the confusion matrix for this experiment are found in Appendix D31-40.
 
 \begin{table}[ht]
 \centering
@@ -168,22 +168,47 @@ Statistical Analysis on the observed differences for these values is carried out
     \item Modified Low Back Pain: all metrics show an increase apart from precision which remains unchanged
 \end{itemize}
 
+The variations between the performance metrics obtained for each of the under-sampling conditions were calculated compared to the established baseline in experiment 1.
+The variations for Accuracy, Sensitivity, Precision and Accuracy are shown in the Appendix tables D1-D4.
+These values were used to create graphs to represent the variations for each metrics in the different conditions and for the different datasets.
+
+
+
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{*9c}
+  \hline
+  \rowcolor{LightCyan}
+Condition &\multicolumn{2}{c} {Accuracy} & \multicolumn{2}{c}{Sensitivity} &  \multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
+  \hline
+ & [A] & [B] & [A] & [B] & [A] & [B] & [A] & [B] \\
+  Under 40  &0.608& 0.581& 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
+  Under 60 &0.353& 0.318& 0.649 & 0.628 & 0.941 & 0.925 & 0.789 & 0.800 \\ 
+  Under 75 &0.797&0.783 & 0.570 & 0.544 & 0.476 & 0.476 & 0.999 & 0.967 \\ 
+   \hline
+\end{tabular}
+\caption{2-tail t-test sigma values for independent t-test carried out on the results obtained for accuracy, sensitivity, precision and F1 score for each of the datasets. [A] Values obtained while keeping the results for the Autism dataset, [B] values obtained while removing the results obtained for the Autism dataset as they were unchanged in any of the conditions.}
+\end{table}
+
+
 For 5 of the explored datasets, this experiment shows that the when under-sampling to the extent of discarding 60\% of the majority class, the sensitivity of the algorithm increases while overall accuracy and precision decrease . The F1 score value may decrease or increase depending on the fluctuations of precision and sensitivity as F1 is calculated from both values. It would be expected that if sensitivity increases more than precision decreases then the F1 score would increase while if sensitivity increases less than precision decreases then F1 score would decrease.
 For both the Breast Cancer and Liver dataset, sensitivity, precision and F1 score showed an increase.
-
-
-\subsection{Over-sampling the minority class (SMOTE)}
 
 
 
 
 
 \section{Discussion: Impact of under-sampling and over-sampling on the performance of the algorithms}
+\subsection{Under-sampling}
 
 
+\subsection{Over-sampling the minority class (SMOTE)}
+Over-sampling was carried out using the smote() function of R (see script Experiment3.R).
+%here need to refer back to  the parameters for the different configurations - detail that in chapter 4.
 
 
- 
 \section{Conclusions}
 
 The main conclusions for this chapter.
