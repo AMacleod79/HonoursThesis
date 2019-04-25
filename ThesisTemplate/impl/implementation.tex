@@ -335,7 +335,7 @@ Cervical\_Cancer & 95.45 & 4.55 \\
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_1b.png}
+    \includegraphics[width=0.95\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_1b.png}
     \caption{Class Distribution of the chosen datasets.\newline In all cases the majority class is the class representing healthy subjects and the minority class is the class representing affected subjects.}
     \label{fig:my_label}
 \end{figure}
@@ -403,9 +403,31 @@ Two other parameters need to be set for the function:
 \end{itemize}
 
 The smote() function is applied only to the training set, in order to train the model,  not the testing set.\newline
-The k value used when applying smote to the non modified datasets was k=4.\newline()
-The smote() function was applied to the modified heart attack dataset and low back pain dataset with separate parameters from the other datasets, as the generally lower number of observation existing in the sample meant that too few majority class observations were retained. The parameters for these datasets were 200, 600 and k= 4.
-Finally the fertility datasets consists of a low number of observation and smote() was also applied with separate parameters so as to retain a larger number of majority class observation (200, 600 k=4).
+The k value used when applying smote to the non modified datasets was k=4. If k was set to a value higher than 4, if the case of those datasets that contained few observations in the minority class after splitting into train and test set, an error was obtained. This was set experimentally but was found to generate good results for the datasets used in this project.\newline
+The parameters per.under and perc.over were set at 100 and 200, respectively (so that the new class distribution would be 1:1 majority:minority classes) for the following datasets: Autism, Breast Cancer, Cervical Cancer, Diabetes, Fertility, Low back Pain, Heart Attack and Liver.
+The smote() function was applied to the Fertillity, Modified Heart Attack dataset and Low Back Pain dataset with separate parameters from the other datasets, as the generally lower number of observation existing in the sample meant that too few majority class observations were retained. The parameters for these datasets were 200, 600 and k= 4.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+  \hline
+  \rowcolor{LightCyan}
+Dataset & k value & perc.over & perc.under \\ 
+  \hline
+  AuSDf & 4 & 200 & 100  \\ 
+  BCDf & 4 &  200 & 100 \\ 
+  CCDf & 4 &  200 & 100\\ 
+  DiabetesDf & 4 & 200 & 100 \\ 
+  FertDf & 4 &  600 & 200 \\ 
+  HAPDf & 4&  200 & 100 \\ 
+  LBPDf & 4 &  200 & 100 \\ 
+  LiverDf & 4 &  200 & 100 \\
+  modHA & 4 & 800 & 200 \\
+  modLBP & 4 & 800 & 200 \\
+   \hline
+\end{tabular}
+\end{table}
+
 
 
 
