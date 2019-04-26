@@ -1,8 +1,28 @@
 \beforeabstract
 \prefacesection{Abstract}
 
+The healthcare sector is the fastest growing sector in terms of data generation and there has been an increasing interest in recent years in applying the tools of machine learning to the healthcare industry with a view to deliver better and more efficient patient care.\newline
+One of the challenges of applying machine learning models to healthcare datasets is that those datasets are frequently severely imbalanced and this can negatively affect the performance of an algorithm.\newline
+This project evaluates some of the available techniques to address the issue of class imbalance at data-level:
+\begin{itemize}
+    \item random under-sampling of the majority class,
+    \item  synthetic minority over-sampling technique (SMOTE).
+\end{itemize}
+
+After assessing the performance of Random Forest on several health-related datasets, random under-sampling and SMOTE were applied separately to the datasets and the performance of Random Forest was assessed again.
+The results obtained show that, while no single technique proved to consistently improve Random Forest performance across all datasets, for some datasets, under-sampling proved to be more successful at improving F1 score, \textit{i.e} suggesting an increase in both sensitivity and precision than SMOTE. However, SMOTE resulted in sensitivity increasing in a statistically significant manner across all dataset when compared to the baseline. The other metrics were not found statistically significantly different.\newline
+Given the healthcare context of the data, it was decided that the metric Sensitivity (a high Sensitivity value suggests a low number of false negatives) would be rated as more important than Precision (a low Precision value suggests a high number of false positives) when evaluating algorithm performance.\newline
+The results from this project also suggests that there is a strong data-dependent effect on the performance of the algorithm and as such it is not possible to recommend one technique over the other as an absolute, rather both should be investigated with different parameters when studying a new dataset and devising a new machine learning model.
+
+
+
 
 \prefacesection{Acknowledgements}
+
+I would like to thank everyone who has taken an interest in this project and offered advice or suggestions, big or small. 
+
+I would particularly like to thank Dr Eyad Elyan for his guidance, supervision and support during this past year and for encouraging me to submit my own proposal early on.
+I would also like to thank Rob, my husband for his continued encouragements, support and patience over the last five years.
 
 
 \afterpreface \afterabstract
