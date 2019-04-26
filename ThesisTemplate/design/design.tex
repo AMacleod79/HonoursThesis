@@ -20,7 +20,7 @@ In cases of medical diagnostic this could have dramatic consequences as the wron
     \centering
     \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/images/Chapter3Figures001.jpeg}
     \caption{Schematic of the experimental design of the study.}
-    \label{fig:my_label}
+    \label{fig:expDesign}
 \end{figure}
 
 \section{Dataset Choice and Preliminary Exploration}
@@ -53,26 +53,27 @@ Table 3.1 sums up the class distribution for the datasets chosen. The class dist
 As can be seen from the table, not all datasets have similar class distribution, though most of the selected ones have a 25-25\% of the Outcome class apart from the Autism set and the cervical cancer set which have less than 10\% of the data representing the target class. \newline This range of class distribution will provide interesting case studies to compare the effect of class distribution on the performance of various algorithms. It could also be possible to artificially manipulate the testing data after the split of data by removing instances of the target class so as to mimic real world incidence of the conditions represented in the datasets. In doing so, the performance of various algorithms could be measured on testing sets that are more realistic.
 
 \begin{table}
-\begin{tabular}{ |p{4cm}|p{1.5cm}| p{1.5cm} | p{1.5 cm}| p{0.9cm}|}
+\begin{tabular}{ p{4.5cm}p{1.5cm} p{1.5cm}  p{2 cm} p{1.5cm}}
  \hline
- \multicolumn{5}{|c|}{Datasets} \\
+ \multicolumn{5}{c}{Datasets} \\
  \hline
- Dataset Name & Instances & Columns & Class Distribution & \% "Outcome" \\
+ \hline
+ \rowcolor{LightCyan}
+ Dataset Name & Instances & Columns & Class Distribution & \% Minority Class \\
  \hline
  Breast Cancer Wisconsin Data Set& 569 & 32 & 
 357-212 & 37.0\\
 Indian Liver Patient Records&  583 & 11  & 416-167 & 28.0 \\
-MRI and Alzheimers & 416 & 12 & 316-100 & 24.0 \\
 Pima Indian dataset& 768 & 9  & 503-265 & 34.0 \\
 Cervical Cancer Risk Classification & 858 &  36 & 802-56 & 6.52\\
 Lower back pain symptom dataset & 310 & 13  & 101-209 & 67.4\\
 Heart Attack Prediction & 294 & 14  & 188-106 & 36.0\\
 Autism Screening&704 & 21 &514-90 & 1.2 \\
 Fertility dataset&100  & 10 & 89-11 & 11.0\\
- \hline
+\hline
 \end{tabular}
 \caption{Summary of datasets chosen for the analysis}
-\label{table:1}
+\label{tab:1}
 \end{table}
 
 
@@ -144,7 +145,7 @@ The confusion matrix describes the complete performance of the model as can be s
     \centering
     \includegraphics[width=0.5\textwidth]{ThesisTemplate/usingLatex/images/ConfusionMatrix.png}
     \caption{Adapted from Mishra, A., Metrics to Evaluate your Machine Learning Algorithm, TowardsDataScience.com}
-    \label{fig:my_label}
+    \label{fig:metrics}
 \end{figure}
 
 \subsubsection{Area under the curve}

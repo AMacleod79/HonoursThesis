@@ -1,14 +1,28 @@
 \chapter{Project Specification}
-Summary of the project outline.
-
 \section{Functional Requirements}
-some text here
+\begin{itemize}
+    \item The project must involve the selection of publicly available health-related datasets
+    \item The project must begin by pre-processing and exploratory data analysis
+    \item The project must use Random Forest as an algorithm to create models to fit the various datasets.
+    \item The project must record performance metrics as a baseline
+    \item The project must use random under-sampling of the majority class in varying proportions.
+    \item The project must use over-sampling of the minority class with appropriate parameters for the datasets 
+    \item The performance metrics obtained in the different situations must be compared to the baseline
+\end{itemize}
 
 \section{Non-Functional Requirements}
-some text here
+\begin{itemize}
+    \item The project will use R as a language to carry out the analysis
+    \item The project will use the necessary available library and package of R for Random Forest and graph generation
+    \item The project will use SSPS for statistical analysis
+\end{itemize}
 
 \chapter{Project Management}
-Discussion on how the project was managed. What things impacted the success of the project. How does the continually revised versions of the project plan compare to the initial draft developed at the start of the project. Did everything run according the schedule. Did elements such as exams \& coursework have any impact. 
+The project management for this project was done using GitHub as both a version control tool and a project management tool. The KanBan-style boards allowed for the creation of milestones, tasks and issues to help keep track of the coding portion of the project and for the thesis writing part of the project.\newline
+Since a GitHub interface was not constantly open while working on the project, it was relatively frequent to forget to mark a task or milestone as completed, although the version control was always carried out and both code and thesis were frequently updated.\newline
+A GitHub repository was created for the actual analysis and coding tasks and a separate one was created to keep track of  the various deadlines and milestones for the thesis writing.\newline
+Weekly meeting were also set up with my supervisor to discuss on-going work, results, potential issues and progress on the project.\newline
+Coursework hand-in weeks and other deadlines from other modules were on occasion conflicting with due deadlines and milestone for the project and this caused stress, particularly in semester 1.
 
 \chapter{Implementation Appendix}
 
@@ -16,7 +30,7 @@ Discussion on how the project was managed. What things impacted the success of t
     \centering
     \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/figure4_2b.png}
     \caption{Distribution of the autism data by country of residence.}
-    \label{fig:my_label}
+    \label{fig:Autism Distribution}
 \end{figure}
 
 \chapter{Evaluation Appendix}
@@ -26,13 +40,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/Autism.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Autism Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixAutism}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/BreastCancer.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Breast Cancer Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixBC}
     \end{minipage}
 \end{figure}
 
@@ -42,13 +56,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/CervicalCancer.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Cervical Cancer Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixCC}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/Diabetes.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Diabetes Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixDia}
     \end{minipage}
 \end{figure}
 
@@ -58,13 +72,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/Fertility.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Fertility Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixFert}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/HeartAttack.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Heart Attack Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixHA}
     \end{minipage}
 \end{figure}
 
@@ -75,13 +89,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/LiverDisease.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixLiver}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/LowBackPain.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixLBP}
     \end{minipage}
 \end{figure}
 
@@ -91,13 +105,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/modHeartAttack.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Heart Attack Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixmodHA}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix/modLowBackPain.png} 
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Low Back Pain Dataset}
-        \label{fig:my_label}
+        \label{fig:matrixmodLBP}
     \end{minipage}
 \end{figure}
 
@@ -114,7 +128,7 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/BreastCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Breast Cancer Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixAutism75}
     \end{minipage}
 \end{figure}
 
@@ -124,13 +138,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/CervicalCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Cervical Cancer Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixCC75}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/Diabetes.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Diabetes Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixDia75}
     \end{minipage}
 \end{figure}
 
@@ -140,13 +154,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/Fertility.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Fertility Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixFert75}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/HA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Heart Attack Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixHA75}
     \end{minipage}
 \end{figure}
 
@@ -156,13 +170,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/LBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLBP75}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/Liver.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLiver75}
     \end{minipage}
 \end{figure}
 
@@ -172,13 +186,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/ModifiedHA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Heart Attack Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodHA75}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix75/ModifiedLBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Low Back Pain Dataset after under-sampling (75\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodLBP75}
     \end{minipage}
 \end{figure}
 
@@ -188,13 +202,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/Autism.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Autism Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixAutism60}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/BreastCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Breast Cancer Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixBC60}
     \end{minipage}
 \end{figure}
 
@@ -204,13 +218,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/CervicalCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Cervical Cancer after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixCC60}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/Diabetes.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Diabetes Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixDia60}
     \end{minipage}
 \end{figure}
 
@@ -220,13 +234,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/LBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLBP60}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/Liver.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLiver60}
     \end{minipage}
 \end{figure}
 
@@ -236,29 +250,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/Fertility.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Fertility Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixFert60}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/HA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Heart Attack Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/LBP.png}
-        \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/Liver.png}
-        \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixHA60}
     \end{minipage}
 \end{figure}
 
@@ -268,13 +266,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/modHA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Heart Attack Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodHA60}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix60/modLBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Low Back Pain Dataset after under-sampling (60\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodLBP60}
     \end{minipage}
 \end{figure}
 
@@ -284,13 +282,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/Autism.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Autism Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixAutism40}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/BreastCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Breast Cancer Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixBC40}
     \end{minipage}
 \end{figure}
 
@@ -300,13 +298,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/CervicalCancer.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Cervical Cancer Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixCC40}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/Diabetes.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Diabetes Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixDia40}
     \end{minipage}
 \end{figure}
 
@@ -316,13 +314,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/LBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLBP40}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/Liver.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixLiver40}
     \end{minipage}
 \end{figure}
 
@@ -332,30 +330,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/Fertility.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Fertility Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixFert40}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/HA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Heart Attack Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
-    \end{minipage}
-\end{figure}
-
-
-\begin{figure}[!htbp]
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/LBP.png}
-        \caption{Confusion Matrix output for Random Forest fitted to the Low Back Pain Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/Liver.png}
-        \caption{Confusion Matrix output for Random Forest fitted to the Liver Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixHA40}
     \end{minipage}
 \end{figure}
 
@@ -365,13 +346,13 @@ Discussion on how the project was managed. What things impacted the success of t
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/modHA.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Heart Attack Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodHA40}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{ThesisTemplate/appendix/images/Chapter5Appendix/ConfusionMatrix40/modLBP.png}
         \caption{Confusion Matrix output for Random Forest fitted to the Modified Low Back Pain Dataset after under-sampling (40\% majority class retained)}
-        \label{fig:my_label}
+        \label{fig:matrixmodLBP40}
     \end{minipage}
 \end{figure}
 
@@ -396,6 +377,7 @@ AuSDf & 0.00 & 0.00 & 0.00 \\
    \hline
 \end{tabular}
 \caption{Observed variations in accuracy for all datasets for the three different conditions of under-sampling}
+\label{tab:variationsAccu}
 \end{table}
 
 \begin{table}[ht]
@@ -418,6 +400,7 @@ AuSDf & 0.00 & 0.00 & 0.00 \\
    \hline
 \end{tabular}
 \caption{Observed variations in sensitivity for all datasets for the three different conditions of under-sampling}
+\label{tab:variationsSensi}
 \end{table}
 
 \begin{table}[ht]
@@ -440,6 +423,7 @@ AuSDf & 0.00 & 0.00 & 0.00 \\
    \hline
 \end{tabular}
 \caption{Observed variations in precision for all datasets for the three different conditions of under-sampling}
+\label{tab:variationsPreci}
 \end{table}
 
 \begin{table}[ht]
@@ -462,6 +446,7 @@ AuSDf & 0.00 & 0.00 & 0.00 \\
    \hline
 \end{tabular}
 \caption{Observed variations in F1 score for all datasets for the three different conditions of under-sampling}
+\label{tab:variationsF1}
 \end{table}
 
 
@@ -484,12 +469,45 @@ AuSDf & 0.00 & 0.00 & 0.00 & 0.00 \\
   FertDf & -0.21 & 0.50 &  &  \\ 
    \hline
 \end{tabular}
-\caption{Variations in performance metrics after SMOTE was applied to the training set compared to the baseline set in experiment 1}
+\caption{Observed variations in performance metrics after SMOTE was applied to the training set compared to the baseline set in experiment 1}
+\label{tab:variationsSMOTE}
 \end{table}
  
 
 \chapter{Project Log}
 
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{4c}
+    \hline
+    \rowcolor{LightCyan}
+       Week  & Date & Topic  \\
+       1     &      &        \\
+       
+       
+       
+       
+    \end{tabular}
+    \caption{Semester 1}
+    \label{tab:my_label}
+\end{table}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{4c}
+    \hline
+    \rowcolor{LightCyan}
+       Week  & Date & Topic  \\
+       1     &      &        \\
+       
+       
+       
+       
+    \end{tabular}
+    \caption{Semester 2}
+    \label{tab:my_label}
+\end{table}
 
 
 

@@ -134,7 +134,6 @@ A check for missing data revealed none, and Smith \textit{et al.,} indicate that
 The class distribution was compiled and presented as a graph (see figure 4.1) and details of the class distribution can be seen in table 4.3. 
 
 \subsubsection{Lower Back Pain dataset}
-
 This dataset was originally built by Dr Henrique da Mota with a view to classify patient as one of 3 class: Normal, patients with disk hernia and patients with spondylolisthesis \citep{RochaNeto:2009wp}. In a second classifying task, the two types of sufferers were grouped as one abnormal category. This dataset was first uploaded to UCI (see http://archive.ics.uci.edu/ml/datasets/vertebral+column) and then uploaded to Kaggle (see https://www.kaggle.com/sammy123/lower-back-pain-symptoms-dataset) as a binary classification task dataset (normal/abnormal).\newline
 The dataset consists of 310 instances with 13 attributes (12 numeric predictors and 1 target label) as follows:
 \begin{itemize}
@@ -255,7 +254,7 @@ There are 704 observations with 21 attributes and 1 target variable (does the pa
 A1 to A10 score represent the answer to each of the 10 question (binary) of a questionnaire for screening based on behaviour. 
 The class label for this dataset is No (for not autistic) and yes (for autistic), so the data was recoded to be consistent with the other datasets to 0 for No and 1 for Yes.\newline
 There were some missing values for the age column which were replaced with the mean value for the column. The "na" values for the ethnicity and relation columns were replaced by "unknown".\newline
-Finally the country of residence column contained 67 different levels which is too many for Random Forest to handle.  Examination of the distribution of the data per country of residence showed that although some countries showed higher proportion of autism patients than others, in many cases the samples sizes were very small (less than 5) and therefore likely to be biased one way or the other (see figure C.1). For that reason, it was felt that, although the countries of residence could have been grouped by continent or geographical zones, this column could be dropped without affecting the performance of the algorithm. 
+Finally the country of residence column contained 67 different levels which is too many for Random Forest to handle. Examination of the distribution of the data per country of residence showed that although some countries showed higher proportion of autism patients than others, in many cases the samples sizes were very small (less than 5) and therefore likely to be biased one way or the other (see figure C.1). For that reason, it was felt that, although the countries of residence could have been grouped by continent or geographical zones, this column could be dropped without affecting the performance of the algorithm.\newline
 
 \subsubsection{Fertility dataset}
 This dataset was obtained from Kaggle:\newline
@@ -275,7 +274,7 @@ This is a small set of 100 observations with 9 variables and a target label:
     \item Diagnosis
 \end{itemize}
 
-The data did not require any pre-processing. Class distribution is shown in figure 4.1 with a breakdown shown in table 4.3.
+The data did not require any pre-processing. Class distribution is shown in figure 4.1 with a breakdown shown in table 4.3.\newline
 
 
 \subsubsection{List of the pre-processed datasets and equivalent dataframes used for the experiments}
@@ -299,7 +298,8 @@ Dataset Name & Preprocessed Dataframe Name & Name of resulting .csv file\\
    Fertility & FertDf & FertDf.csv \\ 
    \hline
 \end{tabular}
-\caption{Lists of datasets and equivalents dataframes after preprocessing. These dataframes and equivalent .csv files were used for the experiments detailed in the rest of this chapter.}
+\caption{Lists of datasets and equivalents dataframes after preprocessing.These dataframes and equivalent .csv files were used for the experiments detailed in the rest of this chapter.}
+\label{tab:datasetsAndFrames}
 \end{table}
 
 \subsection{Class distribution comparisons between datasets}
@@ -330,14 +330,15 @@ Cervical\_Cancer & 95.45 & 4.55 \\
   Fertility & 88.00 & 12.00 \\ 
    \hline
 \end{tabular}
-\caption{Class distribution of the majority and minority classes for each of the dataset used in the project. All numbers are expressed in percentages}
+\caption{Class distribution of the majority and minority classes for each of the dataset used in the project(All numbers are expressed in percentages).}
+\label{tab:classDist}
 \end{table}
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{ThesisTemplate/usingLatex/chapter4Images/figure4_1b.png}
     \caption{Class Distribution of the chosen datasets.\newline In all cases the majority class is the class representing healthy subjects and the minority class is the class representing affected subjects.}
-    \label{fig:my_label}
+    \label{fig:classDistr}
 \end{figure}
 
 
@@ -363,7 +364,7 @@ Under-sampling leads to loss of data and though it is expected some metrics will
     \centering
     \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter4Images/Figure2001.png}
     \caption{Under-sampling the majority class. A proportion of the data in the majority class is discarded resulting in more balanced dataset}
-    \label{fig:my_label}
+    \label{fig:UnderSampling}
 \end{figure}
 
 
@@ -390,7 +391,7 @@ This technique creates new data points for the minority class from existing data
     \centering
     \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter4Images/Figure2002.png}
     \caption{Over-sampling the minority class. New data points for the minority class are created from existing cases, resulting in a more balanced dataset}
-    \label{fig:my_label}
+    \label{fig:OverSample}
 \end{figure}
 
 
@@ -426,6 +427,7 @@ Dataset & k value & perc.over & perc.under \\
   modLBP & 4 & 800 & 200 \\
    \hline
 \end{tabular}
+\label{tab:smoteParam}
 \end{table}
 
 

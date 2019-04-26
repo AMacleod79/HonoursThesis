@@ -30,10 +30,10 @@ AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\
    \hline
 \end{tabular}
 \caption{Performance metrics obtained for Random Forest applied to the chosen datasets}
+\label{tab:RfMetrics}
 \end{table}
 
-The data from the confusion matrix output for the Fertility test (Appendix D.5)
-show that there were no accurate prediction for the positive class and no inaccurate prediction for the positive class which means the the Precision or Positive predictive value could not be calculated (no division by 0) for this dataset. A lack of Precision value means that the F1 score cannot be calculated as it is obtained by calculated the harmonic mean of Precision and Sensitivity.\newline
+The data from the confusion matrix output for the Fertility test (Appendix D.5) show that there were no accurate prediction for the positive class and no inaccurate prediction for the positive class which means the the Precision or Positive predictive value could not be calculated (no division by 0) for this dataset. A lack of Precision value means that the F1 score cannot be calculated as it is obtained by calculated the harmonic mean of Precision and Sensitivity.\newline
 This result is partly due to the size of the dataset (only 100 observations and as such there are only 29 observations in the test set). This means that the model will very accurately predict people not suffering infertility but struggles to identify people suffering from infertility.\newline
 There is no value for the F1 score of the modified Heart Attack dataset as both the Precision and Sensitivity values are equal to 0 and as such the harmonic mean cannot be calculated (no division by 0).\newline
 Table 5.1 also shows that only considering overall accuracy when estimating the performance of an algorithm is misleading. Random Forest returns good to very good accuracy for most of these datasets (accuracy ranges from 0.72 to 1), however, excluding the Autism dataset, the Sensitivity, Precision and F1 score obtained can indicate that although the accuracy is good there is a high chance of the algorithm returning a high number of false positives (low Sensitivity value) or missing out positives (low precision value). \newline
@@ -64,6 +64,7 @@ AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\
    \hline
 \end{tabular}
 \caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (75\% majority class retained)}
+\label{tab:RfMetrics75}
 \end{table}
 
 After 25\% of the majority class was discarded, there was no observable effect on the performance of the algorithm for the Autism dataset. The effects observed on the other datasets varied:
@@ -100,6 +101,7 @@ AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\
    \hline
 \end{tabular}
 \caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (60\% majority class retained)}
+\label{tab:RfMetrics60}
 \end{table}
 
 Retaining 60\% of the majority class does not appear to affect the performance of the algorithm and the Autism dataset, where all metrics have achieved maximum value.
@@ -110,7 +112,7 @@ Retaining 60\% of the majority class does not appear to affect the performance o
     \item F1 score increased in Breast Cancer, Diabetes, Low Back Pain, Liver and modified Low Back Pain but decreased for Cervical Cancer and Heart Attack datasets
 \end{itemize}
 
-Discarding 40\% of the majority class leads to a decrease in overall accuracy  and an increase in sensitivity (apart from the Heart Attack dataset), the effect on precision is variable and effect on the F1 score values depends on the extent of the variation observed on sensitivity and precision.
+Discarding 40\% of the majority class leads to a decrease in overall accuracy  and an increase in sensitivity (apart from the Heart Attack dataset), the effect on precision is variable and effect on the F1 score values depends on the extent of the variation observed on sensitivity and precision.\newline
 
 \subsubsection{Retaining 40\% of the majority class}
 In the third under-sampling experiments 40\% of the majority class was retained. Table 5.4 shows the performance metrics obtained after this operation. Full scripts for this experiments can be found in the Experiment2.R file and the output for the confusion matrix for this experiment are found in Appendix D31-40.
@@ -135,6 +137,7 @@ AuSDf & 1.00 & 1.00 & 1.00 & 1.00 \\
    \hline
 \end{tabular}
 \caption{Performance metrics obtained for Random Forest when applied to the chosen datasets after under-sampling the data (40\% majority class retained)}
+\label{tab:RfMetrics40}
 \end{table}
 
 The performance of Random Forest on the Autism dataset after under-sampling to that extent is not affected at all. Although 60\%of the majority class has been discarded, all the metrics have achieved maximum value.
@@ -152,9 +155,9 @@ These values were used to create graphs to represent the variations for each met
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/AccuVariationUnderBySets.png}
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/AccuVariationUnderBySets.png}
     \caption{Variation of the accuracy value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \label{fig:accuVar}
 \end{figure}
 
 Figure 5.1 shows the variations in accuracy observed when 75\%, 60\% and 40\% of the majority class was retained.
@@ -164,9 +167,9 @@ Overall the effect is that of a decrease in accuracy when under-sampling of the 
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/SensiVariationUnderBySets.png}
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/SensiVariationUnderBySets.png}
     \caption{Variation of the sensitivity value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \label{fig:sensiVar}
 \end{figure}
 Figure 5.2 shows the variations in sensitivity observed when   75\%, 60\% and 40\% of the majority class was retained. The overall effect is that sensitivity increases when under-sampling is applied; The trend is that the more of the majority class has been discarded, the more the sensitivity increases, the highest observed increase is 0.4.\newline
 
@@ -174,18 +177,18 @@ Figure 5.2 shows the variations in sensitivity observed when   75\%, 60\% and 40
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/PreciVariationUnderBySets.png}
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/PreciVariationUnderBySets.png}
     \caption{Variation of the precision value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \label{fig:preciVar}
 \end{figure}
 
 Figure 5.3 shows the variations in precision observed when 75\%, 60\% and 40\% of the majority class was retained. In general, precision is reduced by under-sampling, particularly if the proportion of the majority class to be discarded is large, though the effect remains light (maximum reduction is 0.19) In one case (modified Heart Attack dataset), the precision value is greatly increase when 60\% of the majority class is retained, though that effect is not consistent with what is observed on the other datasets.\newline
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/F1VariationUnderBySets.png}
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/F1VariationUnderBySets.png}
     \caption{Variation of the F1 score value for the three under-sampling conditions compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \label{fig:F1Var}
 \end{figure}
 
 Figure 5.4 shows the variations in F1 score observed when 75\%, 60\% and 40\% of the majority class was retained. In general the F1 score increases with the increased proportion of discarded majority class. The F1 score is partly dependent on both precision and sensitivity, but as previously discussed sensitivity tends to increase when the proportion of majority class discarded increases while precision decreases when the proportion of majority class discarded increases but to a lesser extent; thus the overall effect on the F1 score is that it increases as the proportion of majority class discarded increases.\newline
@@ -216,6 +219,7 @@ FertDf [3] &  61 &  10 & 120 &  70 \\
    \hline
 \end{tabular}
 \caption{Class distribution of the training sets before and after smote() has been applied with the parameters [1]:perc.under =100, perc.over =200, k=4, [2]: perc.under =200, perc.over = 800, k=4, [3]: perc.under =200, perc.over = 600, k=4}
+\label{tab:classDistSMOTE}
 \end{table}
 
 These datasets already contain a low number of observations,  particularly in the minority class so the the training test contained even less observations in the minority class. If the parameters used for the other datasets are applied to Fertility, modified Heart Attack and modified Low Back Pain, not enough majority class points are retained compared to the newly generated minority class observations, thus leading to a large amount of data loss.\newline
@@ -242,7 +246,8 @@ AuSDf & 1 & 1.00 & 1.00 & 1.00 \\
   FertDf & 0.7241 & 0.50 & 0.12 & 0.20 \\ 
    \hline
 \end{tabular}
-\caption{Performance metrics obtained after smote has been applied to the training sets}
+\caption{Performance metrics obtained after the R smote() function has been applied to the training sets}
+\label{tab:SMOTEVar}
 \end{table}
 
 Table 5.6 shows the results obtained for the performance metrics for Random Forest after SMOTE was carried out.\newline
@@ -251,9 +256,9 @@ Table D.5 in the Appendix shows the variations observed for each of the metrics 
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{ThesisTemplate/usingLatex/chapter5Images/OverVariations.png}
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/OverVariations.png}
     \caption{Observed variations for all measured metrics after SMOTE compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \label{fig:smoteVar}
 \end{figure}
 
 Figure 5.5. shows that the effect of SMOTE being applied to the training set was minimal for the Breast Cancer and Diabetes datasets while the largest effect was observed for the Fertility, Cervical Cancer,  modified Heart Attack dataset and modified Low Back Pain.\newline 
@@ -271,8 +276,8 @@ The data obtained in Experiments 1, 2 and 3 were combined to produce the graph s
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/AllMetricsPortrait.png}
-    \caption{Observed variations for all measured metrics after SMOTE compared to the baseline established in Experiment 1 for all studied datasets.}
-    \label{fig:my_label}
+    \caption{Observed variations for all measured metrics in all conditions compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:allVar}
 \end{figure}
 
 When taking into account the class distribution of the datasets before and after SMOTE was applied, or before and after under-sampling was applied, there doesn't seem to be a pattern of effect linked to the new class ratio. For those datasets that achieved a 1:1 ratio after SMOTE, the results were not similar to those obtained after under-sampling which achieved the same ratio (discarding 40\% of the majority class achieved this for all but the Cervical Cancer and Fertility datasets). \newline 
@@ -294,14 +299,15 @@ All other values are inferior to 0.05, which means that the observed differences
   \rowcolor{LightCyan}
 Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
   \hline
-           & [A] & [B] & [A] & [B] & [A] & [B] & [A] & [B] \\
-Under 40  &0.608& 0.581& 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
-  Under 60 &0.353& 0.318& 0.649 & 0.628 & 0.941 & 0.925 & 0.789 & 0.800 \\ 
-  Under 75 &0.797&0.783 & 0.570 & 0.544 & 0.476 & 0.476 & 0.999 & 0.967 \\ 
-  SMOTE &  0.396 & 0.303& 0.055 & 0.920  & .910 &0.975 & 0.320 & 0.545 \\
-   \hline
+           & [A]  & [B]   & [A]   & [B]   & [A]   & [B]   & [A]   & [B] \\
+ Under 40  &0.608 & 0.581 & 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
+  Under 60 &0.353 & 0.318 & 0.649 & 0.628 & 0.941 & 0.925 & 0.789 & 0.800 \\ 
+  Under 75 &0.797 & 0.783 & 0.570 & 0.544 & 0.476 & 0.476 & 0.999 & 0.967 \\ 
+  SMOTE    &0.396 & 0.303 & 0.055 & 0.920 & 0.910 & 0.975 & 0.320 & 0.545 \\
+\hline
 \end{tabular}
 \caption{2-tail t-test sigma values for independent t-test carried out on the results obtained for accuracy, sensitivity, precision and F1 score for each of the datasets. [A] Values obtained while keeping the results for the Autism dataset, [B] values obtained while removing the results obtained for the Autism dataset as they were unchanged in any of the conditions.}
+\label{tab: t-test}
 \end{table}
 
 
@@ -320,6 +326,7 @@ Under 40  &0.910& 0.860& 0.221 & 0.197 & 0.592 & 0.562 & 0.268 & 0.201 \\
    \hline
 \end{tabular}
 \caption{Sigma values for Mann-Whitney test carried out on the results obtained for accuracy, sensitivity, precision and F1 score for each of the datasets. [A] Values obtained while keeping the results for the Autism dataset, [B] values obtained while removing the results obtained for the Autism dataset as they were unchanged in any of the conditions.}
+\label{tab:MannWhiteney}
 \end{table}
  
 
