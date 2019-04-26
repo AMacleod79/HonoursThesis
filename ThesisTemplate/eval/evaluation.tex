@@ -190,11 +190,9 @@ Figure 5.3 shows the variations in precision observed when 75\%, 60\% and 40\% o
 
 Figure 5.4 shows the variations in F1 score observed when 75\%, 60\% and 40\% of the majority class was retained. In general the F1 score increases with the increased proportion of discarded majority class. The F1 score is partly dependent on both precision and sensitivity, but as previously discussed sensitivity tends to increase when the proportion of majority class discarded increases while precision decreases when the proportion of majority class discarded increases but to a lesser extent; thus the overall effect on the F1 score is that it increases as the proportion of majority class discarded increases.\newline
 
-
-
 \subsection{Over-sampling the minority class (SMOTE)}
 Over-sampling was carried out using the smote() function of R (see script Experiment3.R).\newline
-The table below shows the new class distribution of the training sets after the smote() function was applied as described in section 4.3.2.\newline
+The smote() function was applied to the datasets Fertility, modified Heart Attack and modified Low Back Pain with different parameters (see Chapter 4.3.2). 
 
 \begin{table}[!htbp]
 \centering
@@ -220,10 +218,10 @@ FertDf [3] &  61 &  10 & 120 &  70 \\
 \caption{Class distribution of the training sets before and after smote() has been applied with the parameters [1]:perc.under =100, perc.over =200, k=4, [2]: perc.under =200, perc.over = 800, k=4, [3]: perc.under =200, perc.over = 600, k=4}
 \end{table}
 
+These datasets already contain a low number of observations,  particularly in the minority class so the the training test contained even less observations in the minority class. If the parameters used for the other datasets are applied to Fertility, modified Heart Attack and modified Low Back Pain, not enough majority class points are retained compared to the newly generated minority class observations, thus leading to a large amount of data loss.\newline
+The new class distribution obtained for these datasets after SMOTE was applied is shown in table 5.5.\newline
 With these parameters, a new class distribution was achieved of 1:1 ratio majority:minority for the the Autism, Breast Cancer, Cervical Cancer, Diabetes, Heart Attack, Low Back Pain and Liver datasets. The new ratio observed for modified Heart Attack, modified Low Back Pain and Fertility is 1.7:1. \newline
-Table 5.6 shows the results obtained for the performance metrics for Random Forest after SMOTE was carried out.\newline
-As previously noted, the results obtained for the Autism dataset are unchanged when SMOTE has been applied to the dataset. For the other 6 datasets, a decrease in Accuracy can be noted for Cervical Cancer and Liver datasets but it is increased for Breast Cancer and unchanged for the others.
-Sensitivity is increased for Breast Cancer, Cervical Cancer, Diabetes and Heart Attack datasets but decreased for Low Back Pain and Liver datasets. Precision is increased for Breast Cancer, Cervical Cancer, Low back Pain and Liver datasets but decreased for Diabetes and Heart Attack. Finally the F1 score is increased for Breast Cancer, Diabetes and Liver. It is unchanged for Heart Attack and it decreases for Cervical Cancer and Low Back Pain.\newline
+
 
 \begin{table}[!htbp]
 \centering
@@ -247,11 +245,8 @@ AuSDf & 1 & 1.00 & 1.00 & 1.00 \\
 \caption{Performance metrics obtained after smote has been applied to the training sets}
 \end{table}
 
- The smote() function was applied to the datasets Fertility, modified Heart Attack and modified Low Back Pain with different parameters (see Chapter 4.3.2). These datasets already contain a low number of observations,  particularly in the minority class so the the training test contained even less observations in the minority class. If the parameters used for the other datasets are applied to Fertility, modified Heart Attack and modified Low Back Pain, not enough majority class points are retained compared to the newly generated minority class observations, thus leading to a large amount of data loss.\newline
-The new class distribution obtained for these datasets after SMOTE was applied is shown in table 5.5.\newline
-The results obtained after SMOTE was applied to the modified Heart Attack, Low Back Pain and Fertility datasets are shown in table 5.6.\newline
-For the modified Heart Attack and modified Low Back Pain datasets, the Accuracy was decreased in both cases. Sensitivity was increased for modified Heart Attack but unchanged for the modified Low Back Pain. Precision was increased for modified Heart Attack but decreased for modified Low Back Pain and the F1 score increased in both cases.\newline
-In this case of the Fertility dataset, although the overall accuracy of the algorithm was reduced, the sensitivity was increased and both precision and F1 score were given a value (when Random Forest is applied to the dataset without prior modification both precision and F1 returned a non-value).\newline
+Table 5.6 shows the results obtained for the performance metrics for Random Forest after SMOTE was carried out.\newline
+As previously noted, the results obtained for the Autism dataset are unchanged when SMOTE has been applied to the dataset.\newline
 Table D.5 in the Appendix shows the variations observed for each of the metrics when compared to the baseline established in Experiment 1 and they are represented on figure 5.5.\newline
 
 \begin{figure}[!htbp]
@@ -261,39 +256,36 @@ Table D.5 in the Appendix shows the variations observed for each of the metrics 
     \label{fig:my_label}
 \end{figure}
 
-
-
-
+Figure 5.5. shows that the effect of SMOTE being applied to the training set was minimal for the Breast Cancer and Diabetes datasets while the largest effect was observed for the Fertility, Cervical Cancer,  modified Heart Attack dataset and modified Low Back Pain.\newline 
+For the Cervical Cancer and modified Low Back Pain the use of SMOTE on the training set resulted in an important decrease in precision and F1 score, though sensitivity was unchanged.\newline
+For both the Fertility and modified Heart Attack dataset, the sensitivity, precision and F1 score increased.\newline
+A decrease in Accuracy can be noted for Cervical Cancer and Liver datasets but it is increased for Breast Cancer and unchanged for the others.\newline
+Sensitivity is increased for Breast Cancer, Cervical Cancer, Diabetes and Heart Attack datasets but decreased for Low Back Pain and Liver datasets. Precision is increased for Breast Cancer, Cervical Cancer, Low back Pain and Liver datasets but decreased for Diabetes and Heart Attack. Finally the F1 score is increased for Breast Cancer, Diabetes and Liver. It is unchanged for Heart Attack and it decreases for Cervical Cancer and Low Back Pain.\newline
+For the modified Heart Attack and modified Low Back Pain datasets, the Accuracy was decreased in both cases. Sensitivity was increased for modified Heart Attack but unchanged for the modified Low Back Pain. Precision was increased for modified Heart Attack but decreased for modified Low Back Pain and the F1 score increased in both cases.\newline
+In this case of the Fertility dataset, although the overall accuracy of the algorithm was reduced, the sensitivity was increased and both precision and F1 score were given a value (when Random Forest is applied to the dataset without prior modification both precision and F1 returned a non-value).\newline
 
 
 \section{Discussion}
-\subsection{Under-sampling}
-The mean variation for each performance metric was calculated for all three different conditions of under-sampling in order to establish which situation on average would offer the best outcome. Best outcome was defined as minimum reduction in accuracy while sensitivity, precision and F1 score showed improvement.\newline
-In the context of medical diagnosis an increased sensitivity (\textit{i.e} reduced number of false negatives) would mean a better ability to find patients suffering from a given condition.\newline Precision on the other hand reflects the ability to discriminate for false positive (an increased value for precision means that the algorithms picks out less false positive). When discussing the impact of these values for a medical diagnostic tool, it is important to consider what they mean practically. Ideally, a algorithm would have both high precision and high sensitivity so that few "sick" patients would be missed and few "healthy" patients would be misdiagnosed as sick.\newline
-With these considerations in mind, although the under-sampling which eliminated 60\% of the majority class yielded the highest improvement in Sensitivity it also saw the biggest reduction in Precision and the second biggest reduction in Accuracy. Discarding 40\% of the majority class not only increased Sensitivity but also Precision, though the reduction in Accuracy was the highest of the three situation.\newline
-Finally, preserving 75\% of the majority class produced the second largest increase in Sensitivity, and decreased Precision less than when 60\% of the majority class was discarded, while decreasing Accuracy the least.\newline
-In terms of real-life consequences, it would be less problematic for an individual to be told that they may suffer a condition and require more test to confirm diagnostic (even if they are in fact confirmed to be healthy), than to be given a clean bill of health when they should have been identified as having a particular condition. As such, Sensitivity should be given more importance than Precision (though precision should still be viewed as important, particularly if computer-aided diagnostic is to help deliver more efficient healthcare) and Accuracy should remain high overall. This would suggest that best approach to improving algorithm performance over all the datasets used in this experiment would be to under-sample by discarding 25\% of the majority class only. This is an average outcome and as seen in the detailed graphs, for some datasets, discarding large amount of the majority class was necessary in order to correctly identify the sick patients at all (\textit{e.g.} Fertility dataset). \newline
+The data obtained in Experiments 1, 2 and 3 were combined to produce the graph shown in figure 5.6 with a view to show the the effects of under-sampling and over-sampling by SMOTE on all the data sets side by side. The Autism dataset was not represented on this figure as none of the metrics studied here were affected by any of the data manipulation.\newline
 
-
-\begin{table}[!htbp]
+\begin{figure}[!htbp]
     \centering
-    \begin{tabular}{p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}p{0.8cm}}
-        \hline
-        \rowcolor{LightCyan}
-          \multicolumn{3}{c}{Accuracy}& \multicolumn{3}{c}{Sensitivity} & \multicolumn{3}{c}{Precision} & \multicolumn{3}{c}{F1Score}  \\
-          \hline
-         40\% Maj & 60\% Maj & 75\% Maj & 40\% Maj & 60\% Maj & 75\% Maj & 40\% Maj & 60\% Maj & 75\% Maj & 40\% Maj & 60\% Maj & 75\% Maj \\
-         -0.029&-0.060&-0.014&+0.168&+0.083&+0.100& -0.039&+0.111& -0.029&+0.098&+0.029&+0.041
-    \end{tabular}
-    \caption{Mean of the variations observed on the Accuracy, Precision, Sensitivity and F1 score across all datasets for each under-sampling situation}
-    \label{tab:my_label}
-\end{table}    	
-    	
-    	
+    \includegraphics[width=0.8\textwidth]{ThesisTemplate/usingLatex/chapter5Images/AllMetricsPortrait.png}
+    \caption{Observed variations for all measured metrics after SMOTE compared to the baseline established in Experiment 1 for all studied datasets.}
+    \label{fig:my_label}
+\end{figure}
 
-Statistical analysis was carried out on the values obtained from Experiments 1 and 2. An independent t-test was carried out using the software SSPS to evaluate the significance of the variations for each metrics between the baseline (no under-sampling) and each under-sampling condition.\newline
-The output files from SSPS can be found in the github repository and in the appendix. Table 5.5. shows the 2-tail t-test sigma values obtained for each test. All tests were carried out with and without the values for the Autism dataset as these remained unchanged in all experiments and may have affected the results of the t-test.\newline
-None of the sigma values are inferior to 0.05, which means that the observed differences are not significant. It is however worth noting that the samples for each test is small as only 10 datasets were analysed and in some cases the precision or F1 score values were not available, further reducing the number of available cases to be considered. A more extensive analysis with a larger number of datasets could potentially yield statistically significant results.\newline
+When taking into account the class distribution of the datasets before and after SMOTE was applied, or before and after under-sampling was applied, there doesn't seem to be a pattern of effect linked to the new class ratio. For those datasets that achieved a 1:1 ratio after SMOTE, the results were not similar to those obtained after under-sampling which achieved the same ratio (discarding 40\% of the majority class achieved this for all but the Cervical Cancer and Fertility datasets). \newline 
+Overall SMOTE did not produce large changes in overall accuracy, compared to the effects seen with under-sampling. The metrics most affected by both SMOTE and under-sampling sensitivity and precision. Generally speaking, SMOTE did not enhance the metrics measured in this project for the datasets considered.\newline
+In the case of the Cervical Cancer dataset, the decrease in Precision and F1 score while accuracy increased slightly and sensitivity remained unchanged can be explained by the large reduction of the majority class compared to the original training set after SMOTE was carried out (see table 5.5). The reduced number of observations in the majority class means there are less cases for the model to learn what a negative case is, hence reducing the precision (increase in the number of false positive). This trends is also observed in the results from the under-sampling experiments where the larger reduction of majority class yielded lower precision scores, while sensitivity was increased, though only when the new class ratio was reduced from 21:1 to 8.4:1 (a 2.5-fold reduction).\newline
+It is difficult to identify a discernible trend in the effect caused by under-sampling or over-sampling across all datasets and there seem to be a strong data-dependent effect. Generally, under-sampling reduces accuracy and precision while increasing sensitivity. The F1 score is either increased or decreased depending on the scope of variation of both precision and sensitivity. A large increase in F1 score suggests that both precision and sensitivity increase.\newline
+SMOTE only improved the performance of the Random Forest algorithms in two cases: Fertility and modified Heart Attack where a 7- and 9-fold increase in positive data points was created, respectively, although the class ratio was 1.7:1 rather 1:1. This suggests that balancing the class ratio is not the only objective which should be aimed for when using SMOTE, providing many more data positive case points for the algorithm to train on, especially in smaller sample sets may be as important. The fact that the effect of SMOTE on algorithm performance is most noticeable for those datasets that had very low numbers of total and positive observations and where the parameters of the smote() function were different than those used for the other datasets suggests that SMOTE is most effective when applied to small datasets with low number of positive observations and the perc.over parameter needs to be set to a number that will more than doubled the positive cases.\newline
+In the case of under-sampling, the biggest improvements to the performance of Random Forest for these algorithms was seen when 60\% of the majority class was discarded. This condition resulted in an increase in sensitivity in 7/9 cases. This however caused accuracy to decrease in all cases and precision decreased in 5/9 cases. When under-sampling was carried out in smaller proportion, accuracy and precision was still reduced but sensitivity did not increase to the same extent or for as many cases (6/9 cases when 75\% of the majority class was retained).\newline
+Figure 5.6 also shows that for a given dataset, under-sampling provides a better improvement of performance than over-sampling by SMOTE, which has also been observed by other authors \citep{Rekha:2019uu}.
+Statistical analysis was carried out on the values obtained from Experiments 1 and 2. An independent t-test and a Mann-Whitney test was carried out using the software SSPS to evaluate the significance of the variations for each metrics between the baseline (no under-sampling) and each under-sampling condition and over-sampling condition.\newline
+The output files from SSPS can be found in the github repository and in the appendix. Table 5.7. shows the 2-tail t-test sigma values obtained for each independent t-test and table 5.8 shows the results of the Mann-Whitney test. All tests were carried out with and without the values for the Autism dataset as these remained unchanged in all experiments and may have affected the results of the t-test.\newline
+The only sigma values inferior to 0.05 (i.e. showing statistical significant difference between the means) is seen for the sensitivity metric after SMOTE and while retaining the values obtained for the Autism dataset (independent t-test but not Mann-Whitney). This is most likely caused by the sharp increase in sensitivity seen for the Fertility and modified Heart Attack datasets.\newline
+All other values are inferior to 0.05, which means that the observed differences are not significant. Importantly the statistics may not be accurately representing the results since the datasets show great variations in their structure and it may not be appropriate to calculate means for the metrics obtained for the 10 studied datasets since there appear to be a strong data-dependent effect on algorithm performance. Additionally, the samples for each test is small as only 10 datasets were analysed and in some cases the precision or F1 score values were not available, further reducing the number of available cases to be considered. A more extensive analysis with a larger number of datasets could potentially yield statistically significant results.\newline
 
 \begin{table}[!htbp]
 \centering
@@ -306,14 +298,35 @@ Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multi
 Under 40  &0.608& 0.581& 0.395 & 0.375 & 0.820 & 0.815 & 0.297 & 0.255 \\ 
   Under 60 &0.353& 0.318& 0.649 & 0.628 & 0.941 & 0.925 & 0.789 & 0.800 \\ 
   Under 75 &0.797&0.783 & 0.570 & 0.544 & 0.476 & 0.476 & 0.999 & 0.967 \\ 
+  SMOTE &  0.396 & 0.303& 0.055 & 0.920  & .910 &0.975 & 0.320 & 0.545 \\
    \hline
 \end{tabular}
 \caption{2-tail t-test sigma values for independent t-test carried out on the results obtained for accuracy, sensitivity, precision and F1 score for each of the datasets. [A] Values obtained while keeping the results for the Autism dataset, [B] values obtained while removing the results obtained for the Autism dataset as they were unchanged in any of the conditions.}
 \end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{*9c}
+  \hline
+  \rowcolor{LightCyan}
+Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
+  \hline
+           & [A] & [B] & [A] & [B] & [A] & [B] & [A] & [B] \\
+Under 40  &0.910& 0.860& 0.221 & 0.197 & 0.592 & 0.562 & 0.268 & 0.201 \\ 
+  Under 60 &0.427& 0.354& 0.570 & 0.507 & 0.834 & 0.807 & 0.885 & 0.908 \\ 
+  Under 75 &0.910&0.895 & 0.762 & 0.723 & 0.682 & 0.670 & 0.923 & 0.954 \\ 
+  SMOTE &  0.545 & 0.480& 0.649 & 0.595  & 0.203 &0.177 & 0.307 & 0.266 \\
+   \hline
+\end{tabular}
+\caption{Sigma values for Mann-Whitney test carried out on the results obtained for accuracy, sensitivity, precision and F1 score for each of the datasets. [A] Values obtained while keeping the results for the Autism dataset, [B] values obtained while removing the results obtained for the Autism dataset as they were unchanged in any of the conditions.}
+\end{table}
  
 
 \section{Conclusions}
-
-The main conclusions for this chapter.
-
-
+The work described in this chapter fits in a wider context of research to assess the impact of class imbalance on the performance of algorithms such as recent work from Rekkha and colleagues \citep{Rekha:2019uu}. This is an ongoing area of research which should help define solutions to design and train algorithm for the best possible outcome.\newline
+The results from the experiments carried out for this project show that there does not appear a "one-size-fit-all" solution to this problem and that the nature of the data and likely of the algorithm should be considered when attempting to improve the performance of an algorithm to be used on imbalanced data.\newline
+It is also important to remember that when training an algorithm, if the distribution of the training set is markedly different from that of the testing sets, the performance of the algorithm could be affected \citep{Ling:2017jm}. Thus when applying either under-sampling or oversampling techniques to redress the class imbalance, the class distribution of the testing data should also be considered.\newline
+The difficulties encountered with the Fertility dataset and the lack of obvious improvement in the performance of Random Forest when used with this dataset suggests that data-level solutions are not always sufficient in improving the performance of an algorithm and this will be discussed further in chapter 6.
+The results of the experiments have shown that it is difficult to improve all metrics of algorithm performance and there is often a trade-off between accuracy, precision and sensitivity. In this set of experiments, there were only four  instances where both sensitivity and precision increased and only one case in which precision increased while sensitivity decreased. In 24 cases, sensitivity increased but precision remained constant or decreased and accuracy almost always decreased (27/32 cases).
+In terms of real-life consequences, it would be less problematic for an individual to be told that they may suffer a condition and require more testing to confirm diagnostic (even if they are in fact confirmed to be healthy), than to be given a clean bill of health when they should have been identified as having a particular condition. As such, Sensitivity should be given more importance than Precision (though precision should still be viewed as important, particularly if computer-aided diagnostic is to help deliver more efficient healthcare) and Accuracy should remain high overall. This would suggest that best approach to improving algorithm performance over all the datasets used in this experiment would be to under-sample by discarding 25\% of the majority class only. This is an average outcome and as seen in the detailed graphs, for some datasets, discarding large amount of the majority class was necessary in order to correctly identify the sick patients at all (\textit{e.g.} Fertility dataset). \newline
