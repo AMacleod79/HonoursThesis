@@ -344,7 +344,7 @@ Cervical\_Cancer & 95.45 & 4.55 \\
 
 
 \section{Modelling the datasets with Random Forest}
-In chapter 3, a number of algorithms were selected to carry out the analysis. Ideally this analysis would be replicated using more than one algorithms, however due to time constraints, Random Forest was selected first. Random Forest and other decision tree based models have been successfully used to build predictive models on health-related datasets \citep{Dua:2014dz, AlWesabi:hx}. The advantage of Random Forest over standard decision tree algorithms is that it reduces variance of the model \citep{Liberman:2017wf, Ramchandani:2018vv} (see chapter 2, section 2.2.2 and figure 2.4 for a discussion of variance and bias trade-off). Random Forest is usually considered to be a low bias, high variance classifier, which tends to minimise overfitting of the model.\newline
+In chapter 3, a number of algorithms were selected to carry out the analysis. Ideally this analysis would be replicated using more than one algorithms, however due to time constraints, Random Forest was selected first. Random Forest and other decision tree based models have been successfully used to build predictive models on health-related datasets \citep{Dua:2014dz, AlWesabi:hx}. The advantage of Random Forest over standard decision tree algorithms is that it reduces variance of the model \citep{Liberman:2017wf, Ramchandani:2018vv} (see chapter 2, section 2.2.2 and figure 2.4 for a discussion of variance and bias trade-off). Random Forest is usually considered to be a low bias, high variance classifier, which tends to minimise overfitting of the model but has a better bias-variance trade-off than decision trees.\newline
 The Random Forest algorithm was used with all the datasets.\newline
 An R script (see linked repository, \textbf{Experiment1.R} and\textbf{RandomForestModelling.R}) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the dataset after pre-processing as detailed in section 4.1.\newline
 \subsubsection{Procedure and parameters}
@@ -363,8 +363,8 @@ Parameters pertaining to the randomForest() function were modifiable through the
 \section{Modelling the datasets with data-level solutions applied}
 \subsection{Under-sampling of the majority class}
 An R script was created to fit Random Forest to the datasets after under sampling the majority class in an attempt to address the class imbalance.\newline
-Under-sampling means that a proportion of the majority class will be discarded at random with a view to create a more balanced dataset(The diagram in figure 4.2 illustrate under-sampling).\newline
-Under-sampling leads to loss of data and though it is expected some metrics will improve, it is also likely that others will worsen; for example precision may increase but sensitivity may decrease.\newline
+Under-sampling means that a proportion of the majority class will be discarded at random with a view to create a more balanced dataset (The diagram in figure 4.2 illustrate under-sampling).\newline
+Under-sampling leads to loss of data and though it is expected some metrics will improve, it is also likely that others will worsen; for example sensitivity may increase but precision may decrease.\newline
 
 \begin{figure}[!htbp]
     \centering
@@ -374,7 +374,7 @@ Under-sampling leads to loss of data and though it is expected some metrics will
 \end{figure}
 
 
-A function to retain different proportion of each class to include in the experiment was devised. Several different percentages of majority class data were tested, while always retained 100 \% of the minority class.\newline
+A function to retain different proportions of each class to include in the experiment was devised (overUnderSampling.R). Several different percentages of majority class data were tested, while always retained 100 \% of the minority class.\newline
 The proportion of each class to include for input in the Random Forest algorithm can be changed as parameters of the function.\newline
 The default value for the function was 40\% of the majority class and 100\% of the minority class retained.\newline
 Three different values were tested for under-sampling of the majority class:
@@ -386,7 +386,6 @@ Three different values were tested for under-sampling of the majority class:
 
 In all cases 100\% of the minority class was retained.\newline
 The modified datasets were then fed through the RandomForestModelling script and the accuracy, sensitivity precision and F1 score were recorded to evaluate the effects of the under-sampling on the performance of the algorithm for each dataset.\newline
-
 
 
 \subsection{Oversampling of the minority class}
@@ -440,6 +439,6 @@ Dataset & k value & perc.over & perc.under \\
 
 
 \section{Conclusions}
-Three different sets of experiments were carried on all eight datasets with a view to compare the resulting accuracy, precision, sensitivity and F1 score for each dataset in each situation. The results will be plotted and discussed in chapter 5.
+Three different sets of experiments were carried on all eight datasets with a view to compare the resulting accuracy, precision, sensitivity and F1 score for each dataset in each situation. The results will be presented and discussed in chapter 5.
 
 

@@ -482,10 +482,17 @@ AuSDf & 0.00 & 0.00 & 0.00 & 0.00 \\
     \hline
     \rowcolor{LightCyan}
        Week  & Date & Topic  \\
-       1     &      &        \\
-       
-       
-       
+       0    &  17/09    &  Initial Meeting - project overview     \\
+       1    &  26/09    &  Research - Project proposal writing \\
+       2    &  2/10     & Discussion of Project proposal submission \\
+       3    &  9/10     & literature review research and writing, early draft\\
+       4    & 16/10     & Literature review writing\\
+       5    & 23/10     & Literature review writing and researching \\
+       6    & 29/10     & feedback  on first draft of lit. review  \\
+       7    & 6/11      & adjustments to first draft/ submission of lit review \\
+       8    & 13/11     & project requirement decisions and discussion      \\
+       9    & 19/11     & project requirement write up/first draft      \\
+       10   & 26/11     & project requirement adjustments/ writing/submission\\
        
     \end{tabular}
     \caption{Semester 1}
@@ -499,10 +506,21 @@ AuSDf & 0.00 & 0.00 & 0.00 & 0.00 \\
     \hline
     \rowcolor{LightCyan}
        Week  & Date & Topic  \\
-       1     &      &        \\
-       
-       
-       
+       0     & 8/01     &  Exploratory Data Analysis      \\
+       0     & 15/01    &  Exploratory Data Analysis - Meeting    \\
+       0     & 22/01    &  Initial Fit for RF Exploratory Data Analysis\\
+       1     & 29/10    &  Redo fit on RF - rewrite code - some errors \\
+       2     &  5/02    &  Add code to output metrics      \\
+       3     &  12/02   & Change to EDA - repeat experiments  \\
+       4     &  19/02   & Under-sampling- more EDA changes - reduce factor levels  \\
+       5     &  26/02   & SMOTE first attempts    \\
+       6     &  5/03    & Repeat SMOTE experiments - performed on both test and train      \\
+       7     &  12/03   & Repeat SMOTE with better parameters for some of the datasets   \\
+       8     &  19/03   & Final SMOTE experiment - final script   \\
+       9    `&  26/03   & Supporting Graphs for data    \\
+       10    &  9/04    & Thesis writing - Chapter 4 + poster   \\
+       11    &  16/04   & Thesis writing + poster submission + additional graphs generated    \\
+       12    &  23/04   & Thesis writing + checking   \\
        
     \end{tabular}
     \caption{Semester 2}
@@ -511,6 +529,66 @@ AuSDf & 0.00 & 0.00 & 0.00 & 0.00 \\
 
 
 
+\chapter{GitHub Repository ReadMe}
+https://github.com/AMacleod79/HonoursProjectCode
 
 
+HonoursProjectCode ReadMe
+
+This is a repository to back up and version control all of the code for my honours project.
+This is a collection of  R-studio notebooks. The notebooks correspond to each project in the repository.
+The R scripts should be used to run experiments and can be reused for different datasets (as long as label is in the last column).
+
+
+ --Disregard -- Notebooks were used at the beginning but found to be impractical -- List of notebooks:
+
+-  DataExploration.Rmd
+- InitialDataModelling.Rmd
+
+ List of EDA R scripts
+- AutismEDA.R
+- BreastCancerEDA.R
+- CervicalcancerEDA.R
+- ClassDist.R
+- DiabetesEDA.R
+- FertilityEDA.R
+- HeartAttackEDA.R
+- LiverDataEDA.R
+- LowBackPainEDA.R
+
+ List of csv files -- pre-processed data
+ - BCDf.csv
+ - LiverDf.csv
+ - DiabetesDf.csv
+ - AuSDf.csv
+ - HAPDf.csv
+ - LBPDf.csv
+ - CCDf.csv
+ - FertDf.csv
+ - AlzDf.csv
+ 
+List of R scripts
+ - DatasetUploads.R
+ - Train\_Test\_Split.R
+ - RandomForestModelling.R
+ - OverUnderSampling.R
+ - RandomForestModellingSmote.R
+ - LatexTable.R
+ - SMOTEALL.R
+ - SMOTEOne.R
+ 
+ List of Experiments
+ 
+ - Experiment1.R
+ - Experiment2.R
+ - Experiment3.R
+ 
+ List of graph generating scripts
+ - GroupedGraphs.R
+ - VariationsGraph.R
+ - GraphCreator.R
+ - OverSamplingGraphs.R
+ 
+ Notes
+Please disregard the .rda files as they do not upload properly on R studio
 
