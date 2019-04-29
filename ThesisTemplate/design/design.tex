@@ -9,7 +9,7 @@ In many types of datasets, a class imbalance is frequent as there are much fewer
 \item test the different solutions and compare the performance of the algorithms on the same datasets once the solutions have been implemented
 \end{enumerate}
 \subsection{Class Imbalance in healthcare datasets}
-Healthcare-related datasets are particularly sensitive to the class imbalance problem and this can be more or less severe depending on the condition that is being studied. Some diseases have a more frequent occurrence than others, for example certain types of cancer have a very low incidence, especially when looking at the general population, while others are much more common, though their incidence in the population at large will still create a class imbalance. There are however situations where the class imbalance is reversed and incidence of "sickness" tends to be higher than that of "health", and this has been reported in EHR data; since EHR data are formed from doctors' patient records, there tends to be an over-representation of unhealthy cases versus healthy ones in those dataset. In either case, the intrinsic bias of the data towards one of the classes will create issues when training an algorithms as there are insufficient cases of one class to learn from. This will likely result in the algorithm failing to identify properly cases of "sick" label for example and mislabelling them as "healthy". This problem could be further amplified if the class distribution in the data used for training is very different from the class distribution in the testing or live data, on which the algorithm will be used.
+Healthcare-related datasets are particularly sensitive to the class imbalance problem and this can be more or less severe depending on the condition that is being studied. Some diseases have a more frequent occurrence than others, for example certain types of cancer have a very low incidence, especially when looking at the general population, while others are much more common, though their incidence in the population at large will still create a class imbalance. There are however situations where the class imbalance is reversed and incidence of "sickness" tends to be higher than that of "health", and this has been reported in EHR data; since EHR data are formed from doctors' patient records, there tends to be an over-representation of unhealthy cases versus healthy ones in those dataset. In either case, the intrinsic bias of the data towards one of the classes will create issues when training an algorithm as there are insufficient cases of one class to learn from. This will likely result in the algorithm failing to identify properly cases of "sick" label for example and mislabelling them as "healthy". This problem could be further amplified if the class distribution in the data used for training is very different from the class distribution in the testing or live data, on which the algorithm will be used.
 In cases of medical diagnosis this could have dramatic consequences as the wrong diagnosis could be issued to a patient. 
 
 
@@ -82,7 +82,7 @@ Fertility dataset&100  & 10 & 89-11 & 11.0\\
 This works focuses on supervised learning classification tasks. Several supervised machine learning algorithms have shown promises in computer-aided diagnosis (CAD) \citep{Dua:2014dz}:
 \begin{itemize}
     \item decision trees (DT) such as Random Forest are easy to comprehend and relatively easy to implement but are challenging to apply to non linear problems \citep{Gray:2013eh}
-    \item support vector machine \citep{Naraei:ct}
+    \item support vector machine (SVM) \citep{Naraei:ct}
     \item k-NN \citep{Liu:2011dz}
     \item Bayesian models \citep{Dangare:ut}
 \end{itemize}
@@ -96,19 +96,19 @@ The algorithms listed above have demonstrated high performance in classifying ta
 \subsection{Overview of typical methods to address class imbalance}
 The class imbalance problem was discussed in chapter 2 along with some of the techniques used to compensate for its effects. These techniques are discussed here further and can be separated in data-level solutions and algorithm-level solutions:
 \begin{enumerate}
-    \item data-level solutions\citep{Sun:2013it}
+    \item Data-level solutions\citep{Sun:2013it}
     \begin{itemize}
         \item undersampling the prevalent class 
         \item oversampling the minority class
         \item detecting the sub-concepts constituting a class and  oversampling each concept to balance the overall distribution
     \end{itemize}
-    \item algorithm level solutions
+    \item Algorithm level solutions
     the solutions here are highly dependent upon the algorithm and in order o develop an algorithmic solution, knowledge of the classifier learning algorithm and the application domain is necessary as well as a thorough comprehension on why the learning algorithm fails when the class distribution of available data is uneven
     \begin{itemize}
         \item choosing an appropriate inductive bias (e.g. for decision trees, adjusting the pruning technique)
         \item for SVMs, different penalty constants can be used for different classes
     \end{itemize}
-    \item cost-sensitive learning\citep{Sun:2013it}
+    \item Cost-sensitive learning\citep{Sun:2013it}
     Cost-sensitive classification considers the varying costs of different misclassification types i.e. various penalties are applied for classifying one class as another. In this situation, the learning aims to minimize high cost misclassifications and the total cost of misclassification.
     Cost-sensitivity can be obtained through:
     \begin{itemize}
@@ -123,8 +123,8 @@ In the first instance, all of the algorithms will be applied to all of the datas
 
 \subsubsection{Applying the methods to each datasets and algorithms}
 
-
-Then the methods discussed in section 3.4.1 will be employed on all of the datasets and the algorithms will be applied to the modified data again so that performance can be compared.\newline In the case of the cost-learning solutions, the parameters of the different classifiers will be adjusted so as to reduce cost of misclassification, before the performance on each dataset is measured again.
+Then the methods discussed in section 3.4.1 will be employed on all of the datasets and the algorithms will be applied to the modified data again so that performance can be compared.\newline 
+In the case of the cost-learning solutions, the parameters of the different classifiers will be adjusted so as to reduce cost of mi-sclassification, before the performance on each dataset is measured again.
 
 \subsubsection{Testing the performance on more realistic datasets}
 As an added investigation, the testing data (and potentially training) could be modified to reflect actual incidence of the conditions being observed "in the wild" and the performance of the classifiers could be tested again using the optimised parameters and methods used previously.
@@ -159,8 +159,8 @@ This measures a test's accuracy and is obtained by calculating the harmonic mean
 Negative Predictive Value, Calibration and Specificity are also useful measures and may be used in the analysis.
 
 \subsection{Choice of most relevant metrics}
-\subsubsection{which metrics will be most helpful in the healthcare context}
-In the context of healthcare, it is unlikely that accuracy will be very useful; not only it is a poor metric of performance for imbalanced data but the cost of misclassification in health matters could be extremely high and therefore, a poor metric is not suitable and would be at best indicative prior further analysis.
+\subsubsection{Which metrics will be most helpful in the healthcare context}
+In the context of healthcare, it is unlikely that accuracy alone will be very useful; not only it is a poor metric of performance for imbalanced data but the cost of mis-classification in health matters could be extremely high and therefore, a poor metric is not suitable and would be at best indicative prior further analysis.
 
 The other metrics discussed will all be considered and evaluated as to what constitutes the best measure for algorithm performance in this context.
 
@@ -174,21 +174,21 @@ The resulting metrics can then be compared and the most effective method(s) can 
 \section{Technical Requirements}
 \subsection{Language}
 R and Python are the most commonly used languages for data science and analytics. R provides some powerful and user friendly graphs and statistics, therefore making a good visualisation tool. On the other hand python focuses on productivity and code readability.
-Python is better choice if the data analytics and machine learning being carried out is closely linked to a development environment, whereas R has been mostly used in the area of statistics and research \citep{Willems:2015wi}.
-Since this projects will not be involved in the development of an application or support an application logic, R will be used as it offers a large resource base of libraries and visulation options.
+Python is a better choice if the data analytics and machine learning being carried out is closely linked to a development environment, whereas R has been mostly used in the area of statistics and research \citep{Willems:2015wi}.
+Since this projects will not be involved in the development of an application or support an application logic, R will be used as it offers a large resource base of libraries and visualisation options.
 
 \subsection{Software}
 
-R Studio will be used to write and compile code for this project. Microsoft Excel may also be used to examine some of the raw data as tables. 
-None of the datasets are very large and it is not thought that this project will necessitate the use of distributed file systems such as Hadoop.
+R Studio was used to write and compile code for this project. Microsoft Excel was also used to examine some of the raw data as tables. 
+None of the datasets are very large and it was not necessary to use a distributed file system platform such as Hadoop.
 
 \section{Discussion of results}
 \subsection{Results obtained}
-Results of analysis will be collected after each run and analysis will repeated multiple times with the results aggregated so as to avoid variations.
-The various settings of each experiment will be carefully recorded so as to be aware of which parameters was used or which way the data was pre-processed prior analysis.
+Results of analysis were collected after each run and analysis were repeated multiple times with the results aggregated so as to avoid variations.
+The various settings of each experiment were carefully recorded so as to be aware of which parameters was used or which way the data was pre-processed prior analysis.
 
 \subsection{Driving factors for the results}
-The results will be assessed and discussed so as to determine which combination of parameters, algorithm choice and data processing would produce optimal performance, though this will also be balanced with practical concerns and the various costs and benefits of each factors will be discussed.
+The results were assessed and discussed to determine which combination of parameters, algorithm choice and data processing produced optimal performance, though this was also balanced with practical concerns. The various costs and benefits of each factors were discussed.
 
 
 \section{Conclusions}
