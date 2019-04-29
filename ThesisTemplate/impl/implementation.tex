@@ -10,9 +10,9 @@ The extent of class imbalance varied across the different datasets and for some 
 \subsubsection{Cervical cancer dataset}
 The cervical cancer dataset was obtained from kaggle.com. \newline
 (see https://www.kaggle.com/loveall/cervical-cancer-risk-classification)\newline
-This dataset looks at predicting cervical cancer diagnostic based on well known risk factors. Cervical cancer is a complicated diagnostic to make and as such there is not one single test to confirm diagnostic. A diagnostic column was created as an average from the four possible diagnostic test used  (last four column: Hinselmann, Schiller, Citology, Biopsy ) \citep{Fernandes:2017td, Wu:2017fa}.\newline
+This dataset looks at predicting cervical cancer diagnosis based on well known risk factors. Cervical cancer is a complicated diagnosis to make and as such there is not one single test to confirm it. A 'diagnosis' column was created as an average from the four possible diagnostic test used  (last four column: Hinselmann, Schiller, Citology, Biopsy ) \citep{Fernandes:2017td, Wu:2017fa}.\newline
 The dataset contains 858 instances with 32 features and 4 target variables for each of the test carried out.
-The exploratory data analysis carried out on this dataset can be found in the cited github repository as CervicalCancerEDA.R.
+The exploratory data analysis carried out on this dataset can be found in the cited Github repository as CervicalCancerEDA.R.
 The 32 features focus on lifestyle factors previously shown to influence cervical cancer risk in women, namely:
 \begin{itemize}
     \item Age
@@ -43,10 +43,10 @@ The 32 features focus on lifestyle factors previously shown to influence cervica
     \item STDs: Number of diagnosis
     \item STDs: Time since first diagnosis
     \item STDs: Time since last diagnosis
-    \item Dx:Cancer (previous diagnostic of cervical cancer)
-    \item Dx:CIN (previous diagnostic of cervical intreaepithelial neoplasia)
-    \item Dx:HPV (previous diagnostic of HPV)
-    \item Dx (previous diagnostic of cervical cancer)
+    \item Dx:Cancer (previous diagnosis of cervical cancer)
+    \item Dx:CIN (previous diagnosis of cervical intreaepithelial neoplasia)
+    \item Dx:HPV (previous diagnosis of HPV)
+    \item Dx (previous diagnosis of cervical cancer)
     \item Hinselmann (target variable)
     \item Schiller (target variable)
     \item Citology (target variable)
@@ -68,16 +68,16 @@ This dataset was developed with a view to train and test algorithms to determine
 There are  569 instances each with 32 attributes and one target label (B for benign and M for malignant).\newline
 The attributes were computed from images of a fine needle aspirate of a breast mass to describe the characteristics of the cell nuclei present in the image. The features were as follows:
 \begin{itemize}
-    \item radius (mean of distances from center to points on the perimeter)
-    \item texture (standard deviation of gray-scale values) 
-    \item perimeter 
-    \item area 
-    \item smoothness (local variation in radius lengths) 
-    \item compactness (perimeter\^2 / area - 1.0)
-    \item concavity (severity of concave portions of the contour)
-    \item concave points (number of concave portions of the contour)
-    \item symmetry
-    \item fractal dimension ("coastline approximation" - 1)
+    \item Radius (mean of distances from center to points on the perimeter)
+    \item Texture (standard deviation of gray-scale values) 
+    \item Perimeter 
+    \item Area 
+    \item Smoothness (local variation in radius lengths) 
+    \item Compactness (perimeter\^2 / area - 1.0)
+    \item Concavity (severity of concave portions of the contour)
+    \item Concave points (number of concave portions of the contour)
+    \item Symmetry
+    \item Fractal dimension ("coastline approximation" - 1)
 \end{itemize}
 The mean, standard error and mean of of three largest values (i.e. the "worst") for each of the feature was calculated and documented as a feature for each image.\newline
 
@@ -137,18 +137,18 @@ The class distribution was compiled and presented as a graph (see figure 4.1) an
 This dataset was originally built by Dr Henrique da Mota with a view to classify patient as one of 3 class: Normal, patients with disk hernia and patients with spondylolisthesis \citep{RochaNeto:2009wp}. In a second classifying task, the two types of sufferers were grouped as one abnormal category. This dataset was first uploaded to UCI (see http://archive.ics.uci.edu/ml/datasets/vertebral+column) and then uploaded to Kaggle (see https://www.kaggle.com/sammy123/lower-back-pain-symptoms-dataset) as a binary classification task dataset (normal/abnormal).\newline
 The dataset consists of 310 instances with 13 attributes (12 numeric predictors and 1 target label) as follows:
 \begin{itemize}
-    \item pelvic incidence
-    \item pelvic tilt
-    \item lumbar lordosis angle
-    \item sacral slope
-    \item pelvic radius
-    \item degree spondylolisthesis
-    \item pelvic slope
+    \item Pelvic incidence
+    \item Pelvic tilt
+    \item Lumbar lordosis angle
+    \item Sacral slope
+    \item Pelvic radius
+    \item Degree spondylolisthesis
+    \item Pelvic slope
     \item Direct tilt
-    \item thoracic slope
-    \item cervical tilt
-    \item sacrum angle
-    \item scoliosis slope
+    \item Thoracic slope
+    \item Cervical tilt
+    \item Sacrum angle
+    \item Scoliosis slope
 \end{itemize}
 
 The exploratory data analysis for this dataset is documented in the cited github repository as LowBackPainEDA.R.\newline
@@ -165,19 +165,19 @@ https://archive.ics.uci.edu/ml/datasets/heart+Disease \newline
 though some of the files may be corrupted and the classification tasks of the original datasets is not binary.
 The original dataset was made up of 76 predictors but in this dataset this has been reduced to 13 and a target variable:
 \begin{itemize}
-    \item age (in years)
-    \item sex (1 = male, 0 = female) 
-    \item cp (chest pain type 1-4)
-    \item trestbps (resting blood pressure)
-    \item chol (serum cholesterol in mg/dl) 
-    \item fbs (fasting blood sugar >120 mg/dl, 1= true, 0 =false) 
-    \item restecg (resting ECG results - 0 = normal, 1 = ST-T abnormal, 2 = hypertrophy)
-    \item thalach (maximum heart rate achieved)
-    \item exang (exercise induced angina 1 = yes, 0 = no)
-    \item oldpeak (ST depression induced by exercise)
-    \item slope (slope of peak exercise ST segment)
-    \item ca (number of major vessels coloured fluoroscopy (0-3) 
-    \item thal (3 = normal, 6 = fixed defect, 7 = reversable defect) 
+    \item Age (in years)
+    \item Sex (1 = male, 0 = female) 
+    \item Cp (chest pain type 1-4)
+    \item Trestbps (resting blood pressure)
+    \item Chol (serum cholesterol in mg/dl) 
+    \item Fbs (fasting blood sugar >120 mg/dl, 1= true, 0 =false) 
+    \item Restecg (resting ECG results - 0 = normal, 1 = ST-T abnormal, 2 = hypertrophy)
+    \item Thalach (maximum heart rate achieved)
+    \item Exang (exercise induced angina 1 = yes, 0 = no)
+    \item Oldpeak (ST depression induced by exercise)
+    \item Slope (slope of peak exercise ST segment)
+    \item Ca (number of major vessels coloured fluoroscopy (0-3) 
+    \item Thal (3 = normal, 6 = fixed defect, 7 = reversable defect) 
 \end{itemize}
 
 The exploratory data analysis is documented in the cited github repository as HeartAttackEDA.R.\newline
@@ -238,16 +238,16 @@ There are 704 observations with 21 attributes and 1 target variable (does the pa
     \item A8 Score
     \item A9 Score
     \item A10 Score
-    \item age
-    \item gender
-    \item ethnicity 
-    \item jundice (born with jaundice or not)
-    \item austim (relative with PDD or not)
-    \item country of res
-    \item used app before (used the screening app before)
-    \item result (score to the questionnaire)
-    \item age desc (under 18 or not)
-    \item relation (questionnaire filled by self or other)
+    \item Age
+    \item Gender
+    \item Ethnicity 
+    \item Jundice (born with jaundice or not)
+    \item Autism (relative with PDD or not)
+    \item Country of res
+    \item Used app before (used the screening app before)
+    \item Result (score to the questionnaire)
+    \item Age desc (under 18 or not)
+    \item Relation (questionnaire filled by self or other)
     \item Class/ASD
 \end{itemize}
 
@@ -304,11 +304,9 @@ Dataset Name & Preprocessed Dataframe Name & Name of resulting .csv file\\
 
 \subsection{Class distribution comparisons between datasets}
 The class distribution for each dataset was determined as percentages to allow for comparison between the datasets as they vary in size. 
-The percentage of each majority and minority class are given in table 4.3. and represented in figure 4.1.
-The class imbalance varies between dataset. The largest imbalance can be seen for the Cervical Cancer dataset where the minority class represents only 4.55\% of the data, the fertility dataset where the minority class represents 12\% of the data. In the other datasets, the class split is close to 65:35 \% majority:minority.
-
+The percentage of each majority and minority class are given in table 4.3. and represented in figure 4.1.\newline
+The class imbalance varies between dataset. The largest imbalance can be seen for the Cervical Cancer dataset where the minority class represents only 4.55\% of the data, the fertility dataset where the minority class represents 12\% of the data. In the other datasets, the class split is close to 65:35 \% majority:minority.\newline
 In the case of the lower back pain dataset, the class representing the "abnormal" patients counts more instances than the the class representing the "normal" patients, however the terms minority and majority were kept for consistency with the other datasets.\newline
-
 
 
 \begin{table}[!htbp]
@@ -346,17 +344,17 @@ Cervical\_Cancer & 95.45 & 4.55 \\
 
 \section{Modelling the datasets with Random Forest}
 The Random Forest algorithm was used with all the datasets. 
-An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the dataset after pre-processing as detailed in section 4.1.
+An R script (see linked repository, Experiment1.R and RandomForestModelling.R) was created to classify all 10 datasets and obtain a baseline of the performance that could be obtained on the dataset after pre-processing as detailed in section 4.1.\newline
 \subsubsection{Procedure and parameters}
 The dataset were uploaded as a list which was iterated through by the R function randomForest(). 
 The data split was 70:30 train: test and the number of trees was 128 as Oshiro and colleagues showed that setting the number of trees to higher values mostly only used more CPU but did not improve algorithm performance\citep{MayumiOshiro:ve}. Proximity and importance were both set as true.\newline
 The RandomForestModelling.R script output  a data frame containing performance metrics (Accuracy, Precision, Sensitivity and F1 score) of the algorithm for each dataset.\newline
-Parameters pertaining to the randomForest() function were modifiable through the randomForestModelling function created in the script so that different situations could be easily modelled.
+Parameters pertaining to the randomForest() function were modifiable through the randomForestModelling function created in the script so that different situations could be easily modelled.\newline
 
 
 \section{Modelling the datasets with data-level solutions applied}
 \subsection{Under-sampling of the majority class}
-An R script was created to fit Random Forest to the datasets after under sampling the majority class in an attempt to address the class imbalance. 
+An R script was created to fit Random Forest to the datasets after under sampling the majority class in an attempt to address the class imbalance.\newline
 Under-sampling means that a proportion of the majority class will be discarded at random with a view to create a more balanced dataset(The diagram in figure 4.2 illustrate under-sampling).\newline
 Under-sampling leads to loss of data and though it is expected some metrics will improve, it is also likely that others will worsen; for example precision may increase but sensitivity may decrease.\newline
 
@@ -368,8 +366,8 @@ Under-sampling leads to loss of data and though it is expected some metrics will
 \end{figure}
 
 
-A function to retain different proportion of each class to include in the experiment was devised. Several different percentages of majority class data were tested, while always retained 100 \% of the minority class.
-The proportion of each class to include for input in the Random Forest algorithm can be changed as parameters of the function.
+A function to retain different proportion of each class to include in the experiment was devised. Several different percentages of majority class data were tested, while always retained 100 \% of the minority class.\newline
+The proportion of each class to include for input in the Random Forest algorithm can be changed as parameters of the function.\newline
 The default value for the function was 40\% of the majority class and 100\% of the minority class retained.\newline
 Three different values were tested for under-sampling of the majority class:
 \begin{itemize}

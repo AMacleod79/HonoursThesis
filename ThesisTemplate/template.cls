@@ -103,7 +103,9 @@
                 \addvspace{10pt}
                 \listofalgorithms
                 \newpage
-        \fi}
+        \fi
+        
+}
 
         }
 

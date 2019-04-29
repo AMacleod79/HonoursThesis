@@ -294,7 +294,7 @@ All other values are inferior to 0.05, which means that the observed differences
 
 \begin{table}[!htbp]
 \centering
-\begin{tabular}{*9c}
+\begin{tabular}{lrrrrrrrr}
   \hline
   \rowcolor{LightCyan}
 Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
@@ -313,7 +313,7 @@ Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multi
 
 \begin{table}[!htbp]
 \centering
-\begin{tabular}{*9c}
+\begin{tabular}{lrrrrrrrr}
   \hline
   \rowcolor{LightCyan}
 Condition &\multicolumn{2}{c}{Accuracy} &\multicolumn{2}{c}{Sensitivity} &\multicolumn{2}{c}{Precision}&\multicolumn{2}{c}{F1.Score}\\
@@ -336,4 +336,4 @@ The results from the experiments carried out for this project show that there do
 It is also important to remember that when training an algorithm, if the distribution of the training set is markedly different from that of the testing sets, the performance of the algorithm could be affected \citep{Ling:2017jm}. Thus when applying either under-sampling or oversampling techniques to redress the class imbalance, the class distribution of the testing data should also be considered.\newline
 The difficulties encountered with the Fertility dataset and the lack of obvious improvement in the performance of Random Forest when used with this dataset suggests that data-level solutions are not always sufficient in improving the performance of an algorithm and this will be discussed further in chapter 6.
 The results of the experiments have shown that it is difficult to improve all metrics of algorithm performance and there is often a trade-off between accuracy, precision and sensitivity. In this set of experiments, there were only four  instances where both sensitivity and precision increased and only one case in which precision increased while sensitivity decreased. In 24 cases, sensitivity increased but precision remained constant or decreased and accuracy almost always decreased (27/32 cases).
-In terms of real-life consequences, it would be less problematic for an individual to be told that they may suffer a condition and require more testing to confirm diagnostic (even if they are in fact confirmed to be healthy), than to be given a clean bill of health when they should have been identified as having a particular condition. As such, Sensitivity should be given more importance than Precision (though precision should still be viewed as important, particularly if computer-aided diagnostic is to help deliver more efficient healthcare) and Accuracy should remain high overall. This would suggest that best approach to improving algorithm performance over all the datasets used in this experiment would be to under-sample by discarding 25\% of the majority class only. This is an average outcome and as seen in the detailed graphs, for some datasets, discarding large amount of the majority class was necessary in order to correctly identify the sick patients at all (\textit{e.g.} Fertility dataset). \newline
+In terms of real-life consequences, it would be less problematic for an individual to be told that they may suffer a condition and require more testing to confirm diagnosis (even if they are in fact confirmed to be healthy), than to be given a clean bill of health when they should have been identified as having a particular condition. As such, Sensitivity should be given more importance than Precision (though precision should still be viewed as important, particularly if computer-aided diagnosis is to help deliver more efficient healthcare) and Accuracy should remain high overall. This would suggest that best approach to improving algorithm performance over all the datasets used in this experiment would be to under-sample by discarding 25\% of the majority class only. This is an average outcome and as seen in the detailed graphs, for some datasets, discarding large amount of the majority class was necessary in order to correctly identify the sick patients at all (\textit{e.g.} Fertility dataset). \newline

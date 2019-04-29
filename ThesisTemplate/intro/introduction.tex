@@ -2,7 +2,7 @@
 \pagenumbering{arabic} \setcounter{page}{1}
 
 A large amount of data is produced in the healthcare sector \citep{EMC:2014ve} and much of it remains under utilised and/or under analysed due to either lack of resources \citep{Raghupathi:2014ek} or mistrust from patients towards Big Data project \citep{Goldacre:tf,bcs:2017tl}. About 10\% of the UK's population health data is currently available for research through the clinical practice datalink (GRPD) and represents untapped research resource \citep{Kousoulis:2015ti}. However there have already been some successful development of algorithms to help predict healthcare conditions \citep{Bellon:2013um} and through the analysis of social media streams to spot warning signs of major epidemics \citep{Kostkova:2016ur}.\newline
-As such this project aims to use publicly available healthcare-related datasets to examine the issues arising when building models for computer-aided diagnostic.\newline
+As such this project aims to use publicly available healthcare-related datasets to examine the issues arising when building models for computer-aided diagnosis.\newline
 
 \section{Background}
 The healthcare sector is currently one of the fastest growing area of data generation \citep{EMC:2014ve}. Using this data to create a more efficient care delivery system and provide better care to a growing patient base is one of the objective of the IT industry in healthcare. Analysis of large datasets to drive better health outcomes is not new but was traditionally done through large randomised controlled trials (RCT) or systematic reviews \citep{Callahan:2017bz}. Those two types of data collection and analysis are the mainstays of evidence based medicine but present shortcomings as they are challenging to administer and typically only gather data from certain types of patient due to the very restricted inclusion criteria that are usually applied to these studies.\newline
@@ -12,12 +12,12 @@ In recent years there have been many publications showing the use of the machine
 It should however be noted that machine learning is not a magic bullet: not all predicted results will be actionable. For instance there may not be an existing cure for a diagnosis that has been predicted or a model may predict a treatment to be ineffective in certain cases with no existing alternative, which pose ethical concerns as to the action to be taken, this choice should then be considered between patient and physician and falls outwith the remit of what machine learning can do for us \citep{Callahan:2017bz}.\newline
 
 \section{Motivation}
-The healthcare sector currently produces large amounts of data every year and this is set to grow.  According to a report from DellEMC, there were already 153 exabytes of healthcare-related data, with a forecast growth of reaching 2,314 exabytes by 2020 \citep{EMC:2014ve}. The same report highlights that healthcare is the fastest growing sector for data production (annual growth of 48\% compared to an average of 40\% across all sectors).  Health related connected devices (e.g. smart hospital beds , drug delivery system) will increase the data produced in the healthcare sector, with predictions suggesting these devices will contribute up to 16\% of the healthcare data by 2020.\newline
-Further the increased use of wearables produces even larger amount of personalised health data that are largely unexploited (currently only the manufacturers of the devices or developers of the app used on the device have access to this data unless the users have expressively permitted their use for research (e.g. Apple Heart Study with Stanford University \citep{Anonymous:I2FTN6O4, Medicine:2017wa}). However not all of this data is considered useful and one of the challenges to come will be to identify useful data at the right time \citep{EMC:2014ve}.\newline
+The healthcare sector currently produces large amounts of data every year and this is set to grow.  According to a report from Dell-EMC, there were already 153 exabytes of healthcare-related data, with a forecast growth of reaching 2,314 exabytes by 2020 \citep{EMC:2014ve}. The same report highlights that healthcare is the fastest growing sector for data production (annual growth of 48\% compared to an average of 40\% across all sectors). Health related connected devices (e.g. smart hospital beds , drug delivery systems) will increase the data produced in the healthcare sector, with predictions suggesting these devices will contribute up to 16\% of the healthcare data by 2020.\newline
+Further, the increased use of wearables produces even larger amount of personalised health data that are largely unexploited (currently only the manufacturers of the devices or developers of the app used on the device have access to this data unless the users have expressively permitted their use for research (e.g. Apple Heart Study with Stanford University \citep{Anonymous:I2FTN6O4, Medicine:2017wa}). However not all of this data is considered useful and one of the challenges to come will be to identify useful data at the right time \citep{EMC:2014ve}.\newline
 It is thought that healthcare services will be under increased demands from an ageing populations with chronic conditions, adding pressure to a system where staff shortage can already be an issue \citep{Medicine:2017wa}. These factors will require healthcare providers worldwide to be more efficient in delivering patient care. Thus developing algorithms that can accurately predicts patients needs based on their devices output or algorithms that can forecast regional trends of illness or healthcare requirements ahead of time would greatly help organisations provide better care for their patients. \newline
 
 \section{Aims and Objectives}
-In this project public data repository such as Kaggle.com and the UCI Machine Learning Repository will be used to identify several health-related datasets that have been made public and can be used. This project will look at the impact of class imbalance in health datasets on the performance of algorithms used to build models for computer-aided diagnostic. The process will be as follows:
+In this project public data repository such as Kaggle.com and the UCI Machine Learning Repository will be used to identify several health-related datasets that have been made public and can be used. This project will look at the impact of class imbalance in health datasets on the performance of algorithms used to build models for computer-aided diagnosis. The process will be as follows:
 \begin{enumerate}
     \item A comprehensive review of the relevant literature will be undertaken to give this project context and explore what work has already been done in this area of research.
     
@@ -32,45 +32,42 @@ In this project public data repository such as Kaggle.com and the UCI Machine Le
 \end{enumerate}
 
 \section{Key Techniques}
-The main language used to analyse the data and develop the model will be R.
-The data will be pre-processed to generate usable datasets for the analysis and will be analysed through appropriate statistical methods with the help of various R packages and libraries as well as SSPS software where appropriate.\newline
-Visualisation techniques using R will be applied to present the results. The Random Forest algorithm is used in this analysis, as well as SMOTE and random under-sampling. \newline
+The main language used to analyse the data and develop the model is R.
+The data has been pre-processed to generate usable datasets for the analysis and analysed through appropriate statistical methods with the help of various R packages and libraries as well as SSPS software where appropriate.\newline
+Visualisation techniques using R have been applied to present the results. The Random Forest algorithm is used in this analysis, as well as SMOTE and random under-sampling. \newline
 R studio will be used as a platform for the analysis.\newline
 
 \section{Legal, Social and Ethical Issues}
-The use of people healthcare data carries significant legal, social and ethical issues as this type of data is highly personal and confidential.\newline
-All data gathered in the UK falls under the Data Protection Act (1998) and the General Data Protection Rule (GDPR, 2018). This means that data gathered in any context can only be used for the purpose that an individual has expressively agreed to. Therefore patient data can only be used for research purpose and publicly shared if patients have consented to do so.\newline
-The data used for this project has already been made publicly available and was obtained for research purposes through the appropriate ethical process. These datasets have therefore been approved for release and have been anonymised and consent, where appropriate as already been granted for use of the data (for research purpose).\newline
-There are no patient identifying features available in those datasets.\newline
-This project aims to evaluate which solutions can be most effective in improving the performance of an algorithm. Computer-aided diagnostic may have significant ethical, legal and social impact. Indeed when designing an algorithm for the purpose of helping physicians to make decisions about patient health, there should be a clear understanding about the underlying principle guiding the algorithm and about its limitations, so that the results can be evaluated by the physicians in the context of the patient general health \citep{Ahmad:2018fz}.\newline
-The field of computer-aided diagnostics may also be perceived as a threat to employment by medical professionals \citep{Pesapane:2018kv, Cabitza:2017hv} and the use of medical data in the digital age can be seen as controversial by the general public \citep{Goldacre:tf}. Historically, new technologies are frequently feared to cause loss of employment though they tend to generate and redistribute skills instead \citep{Allen:2015ww}.\newline
+The use of individual healthcare data carries significant legal, social and ethical issues as this type of data is highly personal and confidential.\newline
+All data gathered in the UK falls under the Data Protection Act (2018) and the General Data Protection Rule (GDPR, 2018). This means that data gathered in any context can only be used for the purpose that an individual has expressively agreed to. Therefore patient data can only be used for research purpose and publicly shared if patients have consented to do so.\newline
+The data used for this project has already been made publicly available and was obtained for research purposes through the appropriate ethical process. These datasets have therefore been approved for release and have been anonymised, and consent, where appropriate as already been granted for use of the data (for research purposes). There are no patient identifying features available in those datasets.\newline
+This project aims to evaluate which solutions can be most effective in improving the performance of an algorithm. Computer-aided diagnosis may present significant ethical, legal and social issues. Indeed when designing an algorithm for the purpose of helping physicians to make decisions about patient health, there should be a clear understanding about the underlying principle guiding the algorithm and about its limitations, so that the results can be evaluated by the physicians in the context of the patient general health \citep{Ahmad:2018fz}.\newline
+The field of computer-aided diagnosis may also be perceived as a threat to employment by medical professionals \citep{Pesapane:2018kv, Cabitza:2017hv} and the use of medical data in the digital age can be seen as controversial by the general public \citep{Goldacre:tf}. Historically, new technologies are frequently feared to cause loss of employment though they tend to generate and redistribute skills instead \citep{Allen:2015ww}.\newline
 Finally, the legal aspects of this field have to be considered as new European regulations are coming into force \citep{Parliament:TIo8Z78P}. Decision making processes involving Artificial Intelligent need to be explainable, thus any computer-aided diagnostic tool will  need to have strong guidelines regarding its use, limitations and process.\newline
 
 \section{Project Plan}
-Firstly healthcare-related datasets will be chosen to establish some baseline performance metrics for a given algorithm. Once the datasets have been selected the data will be pre-processed so as to eliminate any unnecessary columns where necessary.\newline
-Techniques such as Random Under-sampling and Synthetic Minority Oversampling Technique will be applied to the datasets and the performance of the models re-evaluated.\newline
-If time allows, several algorithms will be compared in similar conditions to establish whether a given solution delivers a consistent effect for a given dataset.\newline
+Firstly healthcare-related datasets were chosen to establish some baseline performance metrics for a given algorithm (Random Forest). Once the datasets were selected the data was pre-processed and a baseline performance for Random Forest on each of the algorithm was established.\newline
+Techniques such as Random Under-sampling and Synthetic Minority Oversampling Technique were applied to the datasets and the performance of the models re-evaluated.\newline
 
 \section{Chapter List}
-Provide a list of all the chapters within the thesis and a brief summary of the content.
 
 \textbf{Chapter \ref{ch:Introduction}} Introduction. 
 
-\textbf{Chapter \ref{ch:Background}} Background Research.
+\textbf{Chapter \ref{ch:Background}} Background Research.\newline
 This chapter will provide context and direction for the project by reviewing the existing literature for the field of machine learning in healthcare.\newline
 
 
-\textbf{Chapter \ref{ch:Design}} Design.
+\textbf{Chapter \ref{ch:Design}} Design.\newline
 This chapter will outline the proposed design of the project.\newline
 
 
-\textbf{Chapter \ref{ch:Implementation}} Implementation.
+\textbf{Chapter \ref{ch:Implementation}} Implementation.\newline
 This chapter will detail the experimental conditions of all experiments carried out, as well as the process behind the decisions made in each case.\newline
 
-\textbf{Chapter \ref{ch:Evaluation}} Evaluation \& Testing.
+\textbf{Chapter \ref{ch:Evaluation}} Evaluation \& Testing.\newline
 This chapter will present and discuss the results obtained in the course of the project.\newline
 
-\textbf{Chapter \ref{ch:Conclusion}} Conclusion. 
+\textbf{Chapter \ref{ch:Conclusion}} Conclusion. \newline
 This chapter will present the general conclusions made from the work carried out as well as any suggested future work which could continue this research.
 
 \section{Conclusion}

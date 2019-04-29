@@ -10,7 +10,7 @@ In many types of datasets, a class imbalance is frequent as there are much fewer
 \end{enumerate}
 \subsection{Class Imbalance in healthcare datasets}
 Healthcare-related datasets are particularly sensitive to the class imbalance problem and this can be more or less severe depending on the condition that is being studied. Some diseases have a more frequent occurrence than others, for example certain types of cancer have a very low incidence, especially when looking at the general population, while others are much more common, though their incidence in the population at large will still create a class imbalance. There are however situations where the class imbalance is reversed and incidence of "sickness" tends to be higher than that of "health", and this has been reported in EHR data; since EHR data are formed from doctors' patient records, there tends to be an over-representation of unhealthy cases versus healthy ones in those dataset. In either case, the intrinsic bias of the data towards one of the classes will create issues when training an algorithms as there are insufficient cases of one class to learn from. This will likely result in the algorithm failing to identify properly cases of "sick" label for example and mislabelling them as "healthy". This problem could be further amplified if the class distribution in the data used for training is very different from the class distribution in the testing or live data, on which the algorithm will be used.
-In cases of medical diagnostic this could have dramatic consequences as the wrong diagnosis could be issued to a patient. 
+In cases of medical diagnosis this could have dramatic consequences as the wrong diagnosis could be issued to a patient. 
 
 
 \subsection{Experimental design outline}
@@ -79,7 +79,7 @@ Fertility dataset&100  & 10 & 89-11 & 11.0\\
 
 \section{Choice of algorithms used in evaluation}
 \subsection{Quick overview of algorithms}
-This works focuses on supervised learning classification tasks. Several supervised machine learning algorithms have shown promises in computer-aided diagnostic (CAD) \citep{Dua:2014dz}:
+This works focuses on supervised learning classification tasks. Several supervised machine learning algorithms have shown promises in computer-aided diagnosis (CAD) \citep{Dua:2014dz}:
 \begin{itemize}
     \item decision trees (DT) such as Random Forest are easy to comprehend and relatively easy to implement but are challenging to apply to non linear problems \citep{Gray:2013eh}
     \item support vector machine \citep{Naraei:ct}
